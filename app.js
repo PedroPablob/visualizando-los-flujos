@@ -594,14 +594,14 @@ function setBoardTerritory(territoryKey) {
   const summaryLabel = document.getElementById('micaSummaryTerritoryLabel');
 
   if (territoryKey === 'sotomayor') {
-    btnCl.className = 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2';
-    btnAr.className = 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2';
+    btnCl.className = 'px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2';
+    btnAr.className = 'px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2';
     badge.textContent = '🇨🇱 Plaza Sotomayor (Valparaíso)';
     question.textContent = '¿Qué recorrido utilizaste la última vez que atravesaste Plaza Sotomayor?';
     if (summaryLabel) summaryLabel.textContent = 'Plaza Sotomayor (Valparaíso)';
   } else {
-    btnAr.className = 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2';
-    btnCl.className = 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2';
+    btnAr.className = 'px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2';
+    btnCl.className = 'px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2';
     badge.textContent = '🇦🇷 Plaza de Mayo (Buenos Aires)';
     question.textContent = '¿Qué recorrido utilizaste la última vez que atravesaste Plaza de Mayo?';
     if (summaryLabel) summaryLabel.textContent = 'Plaza de Mayo (Buenos Aires)';
@@ -619,9 +619,9 @@ function setCornerFilter(cornerKey) {
   document.querySelectorAll('.corner-filter-btn').forEach(btn => {
     const k = btn.dataset.corner;
     if (k === cornerKey) {
-      btn.className = 'corner-filter-btn px-3.5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white flex items-center gap-1.5 transition shadow-sm';
+      btn.className = 'corner-filter-btn px-3.5 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white flex items-center gap-1.5 transition shadow-sm';
     } else {
-      btn.className = 'corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition';
+      btn.className = 'corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition';
     }
   });
 
@@ -648,9 +648,9 @@ function setStickerFilter(stKey) {
   currentStickerFilter = stKey;
   document.querySelectorAll('.st-filter-btn').forEach(btn => {
     if (btn.dataset.st === stKey) {
-      btn.className = 'st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-taupe text-white transition';
+      btn.className = 'st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider bg-taupe text-white transition';
     } else {
-      btn.className = 'st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition';
+      btn.className = 'st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition';
     }
   });
   renderBoardRoutesAndStickers();
@@ -693,11 +693,11 @@ function setBoardMode(mode) {
     if (!btn) return;
     const iconBox = btn.querySelector('div');
     if (k === mode) {
-      btn.className = 'p-4 rounded-2xl text-left bg-neutral-900 text-white shadow-md border-2 border-neutral-900 transition flex items-start gap-3.5 group';
-      if (iconBox) iconBox.className = 'w-10 h-10 rounded-xl bg-white/15 text-white flex items-center justify-center shrink-0 text-lg';
+      btn.className = 'p-4 rounded-xl text-left bg-neutral-900 text-white shadow-md border-2 border-neutral-900 transition flex items-start gap-3.5 group';
+      if (iconBox) iconBox.className = 'w-10 h-10 rounded-lg bg-white/15 text-white flex items-center justify-center shrink-0 text-lg';
     } else {
-      btn.className = 'p-4 rounded-2xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group';
-      if (iconBox) iconBox.className = 'w-10 h-10 rounded-xl bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition';
+      btn.className = 'p-4 rounded-xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group';
+      if (iconBox) iconBox.className = 'w-10 h-10 rounded-lg bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition';
     }
   });
 
@@ -1816,24 +1816,24 @@ function renderSurveyAnalyticsAndTable() {
   const kpiGrid = document.getElementById('surveyLiveKpiGrid');
   if (kpiGrid) {
     kpiGrid.innerHTML = `
-      <div class="p-5 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Total Encuestados</span>
-        <span class="text-3xl font-black text-neutral-900 mt-1 block">${surveyData.length}</span>
+      <div class="p-5 rounded-xl mica-sheet-card border-l-4 border-l-[#29A9E1]">
+        <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Total Encuestados</span>
+        <span class="text-3xl font-display font-bold text-neutral-900 mt-1 block">${surveyData.length}</span>
         <span class="text-xs text-stone-500">Sincronizado con Google Sheets</span>
       </div>
-      <div class="p-5 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Seguridad Cruce Peatonal</span>
-        <span class="text-3xl font-black text-amber-600 mt-1 block">${avgSafety} <small class="text-base font-bold text-stone-400">/ 5.0</small></span>
+      <div class="p-5 rounded-xl mica-sheet-card border-l-4 border-l-[#EAB308]">
+        <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Seguridad Cruce Peatonal</span>
+        <span class="text-3xl font-display font-bold text-amber-600 mt-1 block">${avgSafety} <small class="text-base font-bold text-stone-400">/ 5.0</small></span>
         <span class="text-xs text-stone-500">Percepción media de riesgo vial</span>
       </div>
-      <div class="p-5 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Transporte Predominante</span>
-        <span class="text-xl sm:text-2xl font-black text-e5 mt-1 block">${topTransport}</span>
+      <div class="p-5 rounded-xl mica-sheet-card border-l-4 border-l-[#1E56C6]">
+        <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Transporte Predominante</span>
+        <span class="text-xl sm:text-2xl font-display font-bold text-e5 mt-1 block">${topTransport}</span>
         <span class="text-xs text-stone-500">59,4% llega en Transporte Público</span>
       </div>
-      <div class="p-5 rounded-3xl bg-white border border-stone-200/90 shadow-sm">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Satisfacción Desplazamiento</span>
-        <span class="text-3xl font-black text-e4 mt-1 block">${comfPct}%</span>
+      <div class="p-5 rounded-xl mica-sheet-card border-l-4 border-l-[#2EAA62]">
+        <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Satisfacción Desplazamiento</span>
+        <span class="text-3xl font-display font-bold text-e4 mt-1 block">${comfPct}%</span>
         <span class="text-xs text-stone-500">Evalúa Cómodo o Muy cómodo</span>
       </div>
     `;
@@ -2114,13 +2114,14 @@ function sendNewItemToWebhookIfConfigured(item) {
 }
 
 /* =========================================================================
-   16. ANIMACIÓN DE FONDO DEL HERO + LIGHTBOX + TOAST
+   16. ANIMACIÓN DE FONDO DEL HERO (CURVAS DE FLUJO ORGÁNICO) + LIGHTBOX + TOAST
    ========================================================================= */
 function initHeroBackgroundCanvas() {
   const canvas = document.getElementById('heroFlowCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h;
+  let t = 0;
 
   function resize() {
     w = canvas.width = canvas.parentElement.clientWidth;
@@ -2129,54 +2130,35 @@ function initHeroBackgroundCanvas() {
   resize();
   window.addEventListener('resize', resize);
 
-  const colors = ['#29A9E1', '#EAB308', '#E85C90', '#2EAA62', '#1E56C6', '#E03131'];
-  const walkers = Array.from({ length: 42 }, (_, i) => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    vx: (Math.random() > 0.5 ? 1 : -1) * (0.6 + Math.random() * 1.1),
-    vy: 0,
-    color: colors[i % colors.length],
-    trail: []
-  }));
+  const streams = [
+    { color: '#29A9E1', yRatio: 0.18, amp: 28, freq: 0.0045, speed: 0.014, phase: 0.0 },
+    { color: '#EAB308', yRatio: 0.31, amp: 34, freq: 0.0038, speed: 0.011, phase: 1.2 },
+    { color: '#E85C90', yRatio: 0.46, amp: 26, freq: 0.0052, speed: 0.016, phase: 2.4 },
+    { color: '#2EAA62', yRatio: 0.60, amp: 32, freq: 0.0041, speed: 0.013, phase: 3.6 },
+    { color: '#1E56C6', yRatio: 0.74, amp: 30, freq: 0.0047, speed: 0.012, phase: 4.8 },
+    { color: '#E03131', yRatio: 0.86, amp: 24, freq: 0.0055, speed: 0.015, phase: 5.9 }
+  ];
 
   function animateHero() {
     ctx.clearRect(0, 0, w, h);
-    walkers.forEach(wk => {
-      if (Math.random() < 0.02) {
-        if (wk.vx !== 0) {
-          wk.vy = (Math.random() > 0.5 ? 1 : -1) * Math.abs(wk.vx);
-          wk.vx = 0;
-        } else {
-          wk.vx = (Math.random() > 0.5 ? 1 : -1) * Math.abs(wk.vy);
-          wk.vy = 0;
-        }
-      }
-      wk.x += wk.vx;
-      wk.y += wk.vy;
-      if (wk.x < 0) wk.x = w;
-      if (wk.x > w) wk.x = 0;
-      if (wk.y < 0) wk.y = h;
-      if (wk.y > h) wk.y = 0;
+    t += 1;
 
-      wk.trail.push({ x: wk.x, y: wk.y });
-      if (wk.trail.length > 38) wk.trail.shift();
-
-      if (wk.trail.length > 2) {
-        ctx.beginPath();
-        ctx.moveTo(wk.trail[0].x, wk.trail[0].y);
-        for (let i = 1; i < wk.trail.length; i++) {
-          if (Math.hypot(wk.trail[i].x - wk.trail[i - 1].x, wk.trail[i].y - wk.trail[i - 1].y) > 50) {
-            ctx.moveTo(wk.trail[i].x, wk.trail[i].y);
-          } else {
-            ctx.lineTo(wk.trail[i].x, wk.trail[i].y);
-          }
-        }
-        ctx.strokeStyle = wk.color;
-        ctx.lineWidth = 2.2;
-        ctx.lineCap = 'round';
-        ctx.stroke();
+    streams.forEach(st => {
+      ctx.beginPath();
+      const baseY = h * st.yRatio;
+      for (let x = 0; x <= w; x += 16) {
+        const y = baseY +
+          Math.sin(x * st.freq + t * st.speed + st.phase) * st.amp +
+          Math.cos(x * (st.freq * 0.55) - t * (st.speed * 0.7)) * (st.amp * 0.45);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
       }
+      ctx.strokeStyle = st.color;
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.stroke();
     });
+
     requestAnimationFrame(animateHero);
   }
   animateHero();

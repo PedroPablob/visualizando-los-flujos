@@ -6,10 +6,10 @@
   <title>Visualizando los Flujos — Grupo 4 | Taller de Diseño de Servicios 2026 • e[ad] PUCV</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Montserrat & Lora (fieles a la Wiki y a la Propuesta Beta) -->
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & Lora -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -18,12 +18,13 @@
       theme: {
         extend: {
           fontFamily: {
-            montserrat: ['Montserrat', 'sans-serif'],
+            montserrat: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
             lora: ['Lora', 'Georgia', 'serif'],
           },
           colors: {
-            taupe: '#574F4D',
-            warmbg: '#FAF9F8',
+            taupe: '#3F3A38',
+            warmbg: '#F6F5F2',
             e1: '#29A9E1', /* Celeste */
             e2: '#EAB308', /* Amarillo */
             e3: '#E85C90', /* Rosado */
@@ -38,8 +39,8 @@
 
   <style>
     :root {
-      --c-taupe: #574F4D;
-      --c-warm: #FAF9F8;
+      --c-taupe: #3F3A38;
+      --c-warm: #F6F5F2;
       --c-e1: #29A9E1;
       --c-e2: #EAB308;
       --c-e3: #E85C90;
@@ -49,11 +50,25 @@
     }
 
     body {
-      background-color: #FAF9F8;
-      color: #171717;
-      font-family: 'Montserrat', sans-serif;
+      background-color: #F6F5F2;
+      background-image: radial-gradient(rgba(63, 58, 56, 0.09) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: #18181B;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Tarjeta estilo lámina de mica / plano arquitectónico */
+    .mica-sheet-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid #E4E2DD;
+      box-shadow: 0 10px 28px -12px rgba(24, 24, 27, 0.07);
     }
 
     /* Tablero físico Trovicel + Acrílico */
@@ -175,48 +190,59 @@
 <body class="bg-warmbg text-neutral-900 font-montserrat selection:bg-taupe/20">
 
   <!-- =====================================================================
-       HEADER FIJO EDITORIAL + ESTADO DE CONEXIÓN EN VIVO A GOOGLE SHEETS
+       CABECERA TÉCNICA DE LÁMINA + BARRA ESPECTRAL DE LAS 6 MICAS
        ===================================================================== -->
-  <header class="sticky top-0 z-50 bg-[#FAF9F8]/95 backdrop-blur-md border-b border-stone-200/90">
-    <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-3">
-      <a href="#inicio" class="flex items-center gap-3 group shrink-0">
-        <div class="w-10 h-10 rounded-full bg-taupe text-white flex items-center justify-center font-extrabold text-xs tracking-wider shadow-sm group-hover:bg-neutral-900 transition">
-          G4
+  <header class="sticky top-0 z-50 bg-[#F6F5F2]/95 backdrop-blur-md border-b border-stone-300/90">
+    <!-- Franja cromática de las 6 micas (E1 a E6) -->
+    <div class="w-full h-1.5 grid grid-cols-6">
+      <div class="bg-[#29A9E1]" title="Esquina 1: Celeste"></div>
+      <div class="bg-[#EAB308]" title="Esquina 2: Amarillo"></div>
+      <div class="bg-[#E85C90]" title="Esquina 3: Rosado"></div>
+      <div class="bg-[#2EAA62]" title="Esquina 4: Verde"></div>
+      <div class="bg-[#1E56C6]" title="Esquina 5: Azul"></div>
+      <div class="bg-[#E03131]" title="Esquina 6: Rojo"></div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+      <a href="#inicio" class="flex items-center gap-3.5 group shrink-0">
+        <div class="px-2.5 py-1.5 rounded-md bg-neutral-900 text-white border-l-4 border-[#29A9E1] flex flex-col items-center justify-center font-display font-bold text-[11px] leading-none tracking-wider group-hover:bg-taupe transition">
+          <span>G·04</span>
+          <span class="text-[8px] font-normal text-stone-300 mt-0.5">PUCV</span>
         </div>
-        <div>
-          <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">
-            e[ad] PUCV • Taller de Diseño de Servicios 2026
+        <div class="border-l border-stone-300 pl-3">
+          <span class="block text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">
+            Taller de Diseño de Servicios 2026 • e[ad]
           </span>
-          <span class="block text-xs sm:text-sm font-extrabold tracking-wide text-neutral-900 uppercase">
-            Visualizando los Flujos — Grupo 4
+          <span class="block text-xs sm:text-sm font-display font-bold tracking-tight text-neutral-900 uppercase">
+            Visualizando los Flujos
           </span>
         </div>
       </a>
 
-      <nav class="hidden xl:flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.13em] text-stone-600">
-        <a href="#codificacion" class="hover:text-neutral-900 transition">01. Codificación</a>
-        <a href="#tablero" class="hover:text-neutral-900 transition">02. Dispositivo Digital</a>
-        <a href="#cuantitativo" class="hover:text-neutral-900 transition">03. Datos 10 Min</a>
-        <a href="#encuestas" class="hover:text-neutral-900 transition">04. Encuestas (n=<span id="navSurveyCount">96</span>)</a>
-        <a href="#buenosaires" class="hover:text-neutral-900 transition">05. Valparaíso ↔ BA</a>
+      <nav class="hidden xl:flex items-center gap-1 text-[11px] font-display font-bold uppercase tracking-[0.08em] text-stone-600">
+        <a href="#codificacion" class="px-3 py-1.5 rounded-md hover:bg-stone-200/70 hover:text-neutral-900 transition">I. Método</a>
+        <a href="#tablero" class="px-3 py-1.5 rounded-md hover:bg-stone-200/70 hover:text-neutral-900 transition">II. Tablero de Micas</a>
+        <a href="#cuantitativo" class="px-3 py-1.5 rounded-md hover:bg-stone-200/70 hover:text-neutral-900 transition">III. Planillas 10 Min</a>
+        <a href="#encuestas" class="px-3 py-1.5 rounded-md hover:bg-stone-200/70 hover:text-neutral-900 transition">IV. Encuestas (<span id="navSurveyCount">96</span>)</a>
+        <a href="#buenosaires" class="px-3 py-1.5 rounded-md hover:bg-stone-200/70 hover:text-neutral-900 transition">V. Valparaíso ↔ BA</a>
       </nav>
 
       <div class="flex items-center gap-2">
         <!-- Botón de Estado de Sincronización en Vivo con las 5 Google Sheets -->
-        <button onclick="openSyncModal()" id="liveSyncBadgeBtn" class="px-3 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 text-[11px] font-bold flex items-center gap-2 transition" title="Ver conexión en tiempo real con las 5 planillas de Google Sheets y Google Drive">
-          <span id="liveSyncDot" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <button onclick="openSyncModal()" id="liveSyncBadgeBtn" class="px-3 py-2 rounded-lg bg-emerald-950/5 hover:bg-emerald-950/10 border border-emerald-700/30 text-emerald-900 text-[11px] font-bold flex items-center gap-2 transition" title="Ver conexión en tiempo real con las 5 planillas de Google Sheets y Google Drive">
+          <span id="liveSyncDot" class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
           <span id="liveSyncStatusText" class="hidden sm:inline">Sheets en Vivo (5/5)</span>
           <i class="ph-bold ph-arrows-clockwise text-xs"></i>
         </button>
 
         <!-- Botón Modo Autor / Digitalizar Nuevos Flujos -->
-        <button id="authorModeToggleBtn" onclick="handleAuthorModeClick()" class="px-3.5 py-2 rounded-full border border-stone-300 hover:border-neutral-900 bg-white text-[11px] font-bold uppercase tracking-wider text-neutral-700 hover:text-neutral-900 flex items-center gap-1.5 transition shadow-sm">
+        <button id="authorModeToggleBtn" onclick="handleAuthorModeClick()" class="px-3.5 py-2 rounded-lg border border-stone-300 hover:border-neutral-900 bg-white text-[11px] font-bold uppercase tracking-wider text-neutral-800 hover:text-neutral-950 flex items-center gap-1.5 transition shadow-sm">
           <i id="authorLockIcon" class="ph-bold ph-pencil-line text-sm"></i>
           <span id="authorModeText">Añadir Flujos</span>
         </button>
 
         <!-- Acceso directo a Wiki Casiopea -->
-        <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-taupe hover:bg-neutral-900 text-white text-[11px] font-bold uppercase tracking-wider transition">
+        <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-[11px] font-bold uppercase tracking-wider transition">
           <span>Wiki</span>
           <i class="ph-bold ph-arrow-up-right text-xs"></i>
         </a>
@@ -225,93 +251,169 @@
   </header>
 
   <!-- =====================================================================
-       00. HERO PRINCIPAL CON ANIMACIÓN DE FLUJOS Y KPIS EN TIEMPO REAL
+       PORTADA CARTOGRÁFICA MULTICAPA (DISEÑO ASIMÉTRICO PROPIO DEL GRUPO 4)
        ===================================================================== -->
-  <section id="inicio" class="relative min-h-[82vh] flex items-center justify-center overflow-hidden border-b-2 border-taupe/30 bg-[#FAF9F8]">
-    <!-- Canvas generativo de flujos peatonales en los 6 colores del dispositivo -->
-    <canvas id="heroFlowCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-45"></canvas>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,249,248,0.93)_0%,rgba(250,249,248,0.68)_60%,rgba(250,249,248,0.92)_100%)] pointer-events-none"></div>
+  <section id="inicio" class="relative overflow-hidden border-b border-stone-300 bg-[#F6F5F2] py-12 sm:py-16 lg:py-20">
+    <!-- Lienzo de curvas orgánicas suaves de fondo -->
+    <canvas id="heroFlowCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-30"></canvas>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-10 py-16 text-center space-y-7">
-      <!-- Píldora de colores de las 6 esquinas -->
-      <div class="inline-flex flex-wrap items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 border border-stone-200 text-[11px] font-bold uppercase tracking-[0.18em] text-stone-600 shadow-sm">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#29A9E1]" title="Esquina 1: Celeste"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#EAB308]" title="Esquina 2: Amarillo"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#E85C90]" title="Esquina 3: Rosado"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#2EAA62]" title="Esquina 4: Verde"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#1E56C6]" title="Esquina 5: Azul"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#E03131]" title="Esquina 6: Rojo"></span>
-        <span>Plaza Sotomayor (Valparaíso) ↔ Plaza de Mayo (Buenos Aires)</span>
-      </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
-      <div class="space-y-3">
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-[0.06em] text-neutral-900 leading-[1.05]">
-          Visualizando los Flujos
-        </h1>
-        <p class="font-lora italic text-lg sm:text-2xl text-taupe max-w-3xl mx-auto">
-          Estudio de movimiento, detención y comportamientos peatonales en Plazas Sotomayor y De Mayo
-        </p>
-      </div>
+        <!-- COLUMNA IZQUIERDA (7 COLS): TÍTULO EDITORIAL, ACCIONES Y CRÉDITOS CON LINKS A CASIOPEA -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-7 bg-white/85 backdrop-blur-md p-6 sm:p-10 rounded-xl border border-stone-300/90 shadow-sm relative overflow-hidden">
+          <!-- Barra vertical izquierda con los 6 colores de las esquinas -->
+          <div class="absolute left-0 top-0 bottom-0 w-2 flex flex-col">
+            <div class="flex-1 bg-[#29A9E1]"></div>
+            <div class="flex-1 bg-[#EAB308]"></div>
+            <div class="flex-1 bg-[#E85C90]"></div>
+            <div class="flex-1 bg-[#2EAA62]"></div>
+            <div class="flex-1 bg-[#1E56C6]"></div>
+            <div class="flex-1 bg-[#E03131]"></div>
+          </div>
 
-      <!-- KPIs en Tiempo Real conectados a las Planillas y al Dispositivo -->
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto pt-2 text-left">
-        <div class="p-4 rounded-2xl bg-white/95 border border-stone-200/90 shadow-sm">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Micas y Trazos</span>
-          <span id="heroKpiRoutes" class="text-2xl sm:text-3xl font-extrabold text-neutral-900">55</span>
-          <span class="text-[11px] text-stone-500 block">Recorridos digitalizados</span>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/95 border border-stone-200/90 shadow-sm">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Stickers Fricción</span>
-          <span id="heroKpiStickers" class="text-2xl sm:text-3xl font-extrabold text-e6">65</span>
-          <span class="text-[11px] text-stone-500 block">Obstáculos georreferenciados</span>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/95 border border-stone-200/90 shadow-sm">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Encuestas en Vivo</span>
-          <span id="heroKpiSurveys" class="text-2xl sm:text-3xl font-extrabold text-e5">96</span>
-          <span class="text-[11px] text-stone-500 block">Seguridad media: <strong id="heroKpiSafety">2.99</strong>/5</span>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/95 border border-stone-200/90 shadow-sm">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Observación 10 Min</span>
-          <span id="heroKpiMinutes" class="text-2xl sm:text-3xl font-extrabold text-e4">539</span>
-          <span class="text-[11px] text-stone-500 block">Minutos medidos en E1–E6</span>
-        </div>
-        <div class="col-span-2 md:col-span-1 p-4 rounded-2xl bg-white/95 border border-stone-200/90 shadow-sm">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 block">Cruce Informal Máx.</span>
-          <span id="heroKpiInformal" class="text-2xl sm:text-3xl font-extrabold text-amber-600">56%</span>
-          <span class="text-[11px] text-stone-500 block">En Esquina 4 (Cochrane Sur)</span>
-        </div>
-      </div>
+          <div class="space-y-5 pl-2 sm:pl-3">
+            <!-- Encabezado técnico de lámina (sin píldora de puntos copiada) -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-200 text-[11px] font-display font-bold uppercase tracking-[0.14em] text-stone-500">
+              <span>PROYECTO DE VISUALIZACIÓN • GRUPO 4</span>
+              <span class="text-neutral-900">VALPARAÍSO (CL) / BUENOS AIRES (AR)</span>
+            </div>
 
-      <!-- Botones de Acción Principal -->
-      <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
-        <a href="#tablero" class="px-6 py-3.5 rounded-full bg-neutral-900 hover:bg-taupe text-white text-xs font-bold uppercase tracking-[0.15em] transition shadow-md inline-flex items-center gap-2">
-          <i class="ph-bold ph-stack text-base"></i>
-          <span>Explorar Dispositivo de Micas</span>
-        </a>
-        <button onclick="activateAuthorAndScroll()" class="px-6 py-3.5 rounded-full bg-white hover:bg-stone-100 text-neutral-900 border-2 border-neutral-900 text-xs font-bold uppercase tracking-[0.15em] transition inline-flex items-center gap-2">
-          <i class="ph-bold ph-pen-nib text-base"></i>
-          <span>Dibujar Nuevo Recorrido</span>
-        </button>
-        <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-full bg-stone-200/80 hover:bg-stone-300/80 text-neutral-800 text-xs font-bold uppercase tracking-[0.14em] transition inline-flex items-center gap-2">
-          <i class="ph-bold ph-book-open-text text-base"></i>
-          <span>Wiki del Proyecto</span>
-        </a>
-        <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-full bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 text-xs font-bold uppercase tracking-[0.14em] transition inline-flex items-center gap-2">
-          <i class="ph-bold ph-google-drive-logo text-base"></i>
-          <span>Drive del Proyecto</span>
-        </a>
-      </div>
+            <div class="space-y-3">
+              <h1 class="font-display text-4xl sm:text-5xl xl:text-6xl font-bold uppercase tracking-tight text-neutral-950 leading-[1.03]">
+                Visualizando los Flujos
+              </h1>
+              <p class="font-lora italic text-lg sm:text-xl text-stone-700 leading-relaxed">
+                Estudio de movimiento, detención y comportamientos peatonales en Plazas Sotomayor y De Mayo
+              </p>
+            </div>
 
-      <!-- Integrantes del Equipo y Profesoras -->
-      <div class="pt-4 border-t border-stone-200/80 text-[11px] text-stone-500 font-medium space-y-1">
-        <div>
-          <strong class="uppercase tracking-wider text-stone-700">Estudiantes Grupo 4:</strong>
-          Muriel Sánchez • Paula Rosenthal La Fuente • Denisse Navarro • Paz Vega Soto • Gerardo Acevedo • Pedro Beltrán
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Registro táctil y digital compuesto por <strong>6 láminas de mica transparente</strong> (una por esquina de intercepción), <strong>5 pictogramas de fricción urbana</strong>, <strong>planillas de observación sistemática de 10 minutos</strong> y <strong>encuestas ciudadanas</strong> conectadas en tiempo real.
+            </p>
+
+            <!-- Botones de Acción con geometría arquitectónica propia -->
+            <div class="pt-2 flex flex-wrap items-center gap-2.5">
+              <a href="#tablero" class="px-5 py-3 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-xs font-display font-bold uppercase tracking-wider transition shadow-sm inline-flex items-center gap-2">
+                <i class="ph-bold ph-layers text-base text-[#29A9E1]"></i>
+                <span>Abrir Tablero de Micas</span>
+              </a>
+              <button onclick="activateAuthorAndScroll()" class="px-5 py-3 rounded-lg bg-white hover:bg-stone-100 text-neutral-900 border-2 border-neutral-900 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-2">
+                <i class="ph-bold ph-pen-nib text-base"></i>
+                <span>Dibujar Nuevo Recorrido</span>
+              </button>
+              <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-lg bg-stone-100 hover:bg-stone-200 text-neutral-900 border border-stone-300 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-1.5">
+                <i class="ph-bold ph-book-open-text text-base"></i>
+                <span>Wiki del Proyecto</span>
+              </a>
+              <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-lg bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-1.5">
+                <i class="ph-bold ph-google-drive-logo text-base"></i>
+                <span>Drive</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Integrantes y Profesoras con enlaces directos a sus perfiles de Wiki Casiopea -->
+          <div class="pl-2 sm:pl-3 pt-4 border-t border-stone-200 text-xs text-stone-600 space-y-1.5">
+            <div class="leading-relaxed">
+              <strong class="font-display uppercase tracking-wider text-neutral-900 text-[11px] mr-1.5">Integrantes:</strong>
+              <a href="https://wiki.ead.pucv.cl/Muriel_Sanchez" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Muriel Sánchez</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Paula_Rosenthal_La_Fuente" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Paula Rosenthal La Fuente</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Denisse_Navarro" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Denisse Navarro</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Paz_Vega_Soto" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Paz Vega Soto</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Gerardo_Acevedo" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Gerardo Acevedo</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Pedro_Beltr%C3%A1n" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Pedro Beltrán</a>
+            </div>
+            <div class="leading-relaxed">
+              <strong class="font-display uppercase tracking-wider text-neutral-900 text-[11px] mr-1.5">Profesoras:</strong>
+              <a href="https://wiki.ead.pucv.cl/Katherine_Exss" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Katherine Exss</a>
+              <span class="text-stone-300 mx-1">/</span>
+              <a href="https://wiki.ead.pucv.cl/Javiera_Ruiz" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Javiera Ruiz</a>
+            </div>
+          </div>
         </div>
-        <div>
-          <strong class="uppercase tracking-wider text-stone-700">Profesoras:</strong>
-          Katherine Exss • Javiera Ruiz
+
+        <!-- COLUMNA DERECHA (5 COLS): FICHA TÉCNICA DE CAPAS DE MICA Y MÉTRICAS EN VIVO -->
+        <div class="lg:col-span-5 flex flex-col justify-between bg-neutral-900 text-white p-6 sm:p-8 rounded-xl border border-neutral-800 shadow-lg space-y-6">
+          <div class="flex items-center justify-between border-b border-white/15 pb-3">
+            <div>
+              <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">
+                ÍNDICE DE CAPAS E INDICADORES EN VIVO
+              </span>
+              <h2 class="text-base sm:text-lg font-display font-bold uppercase tracking-wide text-white mt-0.5">
+                6 Esquinas = 6 Micas Superpuestas
+              </h2>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-white/10 text-[10px] font-display font-bold uppercase tracking-wider text-emerald-300">
+              Google Sheets Activo
+            </span>
+          </div>
+
+          <!-- Acceso rápido a cada una de las 6 capas de mica -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-left">
+            <button onclick="focusCornerOnBoard('E1')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#29A9E1] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#29A9E1] block">Mica E1 • Celeste</span>
+              <span class="text-xs font-semibold text-white block truncate">Blanco Sur</span>
+            </button>
+            <button onclick="focusCornerOnBoard('E2')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#EAB308] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#EAB308] block">Mica E2 • Amarillo</span>
+              <span class="text-xs font-semibold text-white block truncate">Estación Puerto</span>
+            </button>
+            <button onclick="focusCornerOnBoard('E3')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#E85C90] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#E85C90] block">Mica E3 • Rosado</span>
+              <span class="text-xs font-semibold text-white block truncate">Cochrane Norte</span>
+            </button>
+            <button onclick="focusCornerOnBoard('E4')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#2EAA62] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#2EAA62] block">Mica E4 • Verde</span>
+              <span class="text-xs font-semibold text-white block truncate">Cochrane Sur</span>
+            </button>
+            <button onclick="focusCornerOnBoard('E5')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#1E56C6] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#60A5FA] block">Mica E5 • Azul</span>
+              <span class="text-xs font-semibold text-white block truncate">Prat Sur / Correo</span>
+            </button>
+            <button onclick="focusCornerOnBoard('E6')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#E03131] transition text-left">
+              <span class="text-[10px] font-display font-bold uppercase text-[#F87171] block">Mica E6 • Rojo</span>
+              <span class="text-xs font-semibold text-white block truncate">Armada / Prat</span>
+            </button>
+          </div>
+
+          <!-- Matriz de los 5 KPIs en Tiempo Real -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 border-t border-white/15">
+            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Trazos en Micas</span>
+              <span id="heroKpiRoutes" class="text-2xl font-display font-bold text-white">55</span>
+              <span class="text-[10px] text-stone-400 block">Recorridos activos</span>
+            </div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Stickers Fricción</span>
+              <span id="heroKpiStickers" class="text-2xl font-display font-bold text-[#F87171]">65</span>
+              <span class="text-[10px] text-stone-400 block">En puntos de conflicto</span>
+            </div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Encuestas</span>
+              <span id="heroKpiSurveys" class="text-2xl font-display font-bold text-[#29A9E1]">96</span>
+              <span class="text-[10px] text-stone-400 block">Seguridad: <strong id="heroKpiSafety" class="text-white">2.99</strong>/5</span>
+            </div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Planillas 10 Min</span>
+              <span id="heroKpiMinutes" class="text-2xl font-display font-bold text-[#2EAA62]">539</span>
+              <span class="text-[10px] text-stone-400 block">Minutos registrados</span>
+            </div>
+            <div class="col-span-2 sm:col-span-2 p-3 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Cruce Fuera de Paso</span>
+                <span class="text-[11px] text-stone-300 block">Máximo registrado en Esquina 4</span>
+              </div>
+              <span id="heroKpiInformal" class="text-2xl sm:text-3xl font-display font-bold text-[#EAB308]">56%</span>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -319,97 +421,102 @@
   <main class="max-w-[1400px] mx-auto px-4 sm:px-8">
 
     <!-- =====================================================================
-         01. PRESENTACIÓN, CONTEXTO Y SISTEMA DE CODIFICACIÓN DEL DISPOSITIVO
+         LÁMINA I: PRESENTACIÓN, CONTEXTO Y SISTEMA DE CODIFICACIÓN DEL DISPOSITIVO
          ===================================================================== -->
-    <section id="codificacion" class="py-16 sm:py-20 border-b border-stone-200 space-y-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-        <div class="lg:col-span-7 space-y-2.5">
-          <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-taupe block">
-            01 • Fundamento Urbano y Sistema de Lectura
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 leading-tight">
+    <section id="codificacion" class="py-16 sm:py-20 border-b border-stone-300 space-y-10">
+      <!-- Cabezal técnico de sección -->
+      <div class="border-t-2 border-neutral-900 pt-4 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-[0.18em] text-stone-500">
+            <span class="px-2 py-0.5 rounded bg-neutral-900 text-white">LÁMINA I</span>
+            <span>FUNDAMENTO URBANO Y SISTEMA DE LECTURA</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-neutral-900 leading-tight">
             Del Espacio Público al Registro Multicapa
           </h2>
         </div>
-        <p class="lg:col-span-5 text-sm sm:text-base text-stone-600 font-normal leading-relaxed">
-          La Plaza Sotomayor concentra actividades cívicas, turísticas, portuarias y de transporte intermodal. Nuestro artefacto físico traduce la experiencia de atravesar sus <strong>6 esquinas</strong> mediante <strong>láminas de mica superpuestas</strong>, <strong>plumones acrílicos por esquina</strong> y <strong>5 pictogramas de fricción urbana</strong>.
+        <p class="lg:max-w-xl text-sm text-stone-600 leading-relaxed">
+          La Plaza Sotomayor concentra actividades cívicas, turísticas, portuarias y de transporte intermodal. Nuestro artefacto físico traduce la experiencia de atravesar sus <strong>6 esquinas</strong> mediante <strong>láminas de mica superpuestas</strong> y <strong>5 pictogramas de fricción urbana</strong>.
         </p>
       </div>
 
-      <!-- 3 Pilares del Fenómeno Urbano (Wiki) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-2">
-          <div class="w-9 h-9 rounded-2xl bg-taupe/10 text-taupe flex items-center justify-center font-extrabold text-sm">01</div>
-          <h3 class="text-base font-extrabold uppercase text-neutral-900">Convergencia de Funciones</h3>
+      <!-- 3 Pilares del Fenómeno Urbano (Diseño de ficha técnica con borde superior cromático) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#29A9E1] space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-display font-bold uppercase tracking-widest text-stone-400">EJE 01</span>
+            <i class="ph-bold ph-buildings text-lg text-[#29A9E1]"></i>
+          </div>
+          <h3 class="text-base font-display font-bold uppercase text-neutral-900">Convergencia de Funciones</h3>
           <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
             Concentra simultáneamente instituciones públicas y Armada, turismo (Monumento a los Héroes de Iquique, Muelle Prat), transporte (Estación Puerto, paraderos de buses) y comercio, provocando un choque constante de ritmos.
           </p>
         </div>
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-2">
-          <div class="w-9 h-9 rounded-2xl bg-taupe/10 text-taupe flex items-center justify-center font-extrabold text-sm">02</div>
-          <h3 class="text-base font-extrabold uppercase text-neutral-900">Escala Monumental vs. Humana</h3>
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#EAB308] space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-display font-bold uppercase tracking-widest text-stone-400">EJE 02</span>
+            <i class="ph-bold ph-arrows-out-line-horizontal text-lg text-[#EAB308]"></i>
+          </div>
+          <h3 class="text-base font-display font-bold uppercase text-neutral-900">Escala Monumental vs. Humana</h3>
           <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
             La gran explanada central genera una escala abierta que contrasta fuertemente con la estrechez de las veredas y umbrales comerciales de los bordes, forzando distintas maneras de habitar y cortar camino por el vacío.
           </p>
         </div>
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-2">
-          <div class="w-9 h-9 rounded-2xl bg-taupe/10 text-taupe flex items-center justify-center font-extrabold text-sm">03</div>
-          <h3 class="text-base font-extrabold uppercase text-neutral-900">Nodo de Fricción Modal</h3>
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#E03131] space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-display font-bold uppercase tracking-widest text-stone-400">EJE 03</span>
+            <i class="ph-bold ph-warning-diamond text-lg text-[#E03131]"></i>
+          </div>
+          <h3 class="text-base font-display font-bold uppercase text-neutral-900">Nodo de Fricción Modal</h3>
           <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
             Punto de alta tensión donde el tránsito peatonal intensivo se intersecta con el flujo vehicular (9 a 16 veh/min) y micros (hasta 1,8 buses/min), generando pausas obligadas, esquives y hasta <strong>56% de cruces fuera de paso habilitado</strong>.
           </p>
         </div>
       </div>
 
-      <!-- Sistema de Codificación en 3 Bloques: 1. 6 Colores de Esquina | 2. 5 Pictogramas | 3. Arquitectura del Prototipo -->
+      <!-- Sistema de Codificación en 3 Bloques -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Bloque A: Código de Color por Esquina -->
-        <div class="lg:col-span-4 p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="lg:col-span-4 p-6 rounded-xl mica-sheet-card flex flex-col justify-between space-y-5">
           <div class="space-y-2">
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Variable 01 • Esquina de Intercepción</span>
-            <h3 class="text-xl font-extrabold uppercase text-neutral-900">6 Esquinas = 6 Capas de Color</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400">Variable 01 • Esquina de Intercepción</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">6 Esquinas = 6 Capas de Color</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
-              Interceptamos a los transeúntes en cada una de las 6 esquinas. Cada esquina tiene su propia <strong>lámina de mica transparente</strong> y un color de trazo y stickers asignado:
+              Interceptamos a los transeúntes en cada una de las 6 esquinas. Cada esquina tiene su propia <strong>lámina de mica transparente</strong> y un color asignado:
             </p>
           </div>
           <div class="grid grid-cols-2 gap-2.5 text-xs font-bold">
-            <button onclick="focusCornerOnBoard('E1')" class="p-3 rounded-2xl bg-stone-50 hover:bg-sky-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#29A9E1] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E1')" class="p-3 rounded-lg bg-stone-50 hover:bg-sky-50 border border-stone-200 border-l-4 border-l-[#29A9E1] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 1</span>
                 <span class="text-[10px] text-stone-500 font-medium">Celeste • Blanco S.</span>
               </div>
             </button>
-            <button onclick="focusCornerOnBoard('E2')" class="p-3 rounded-2xl bg-stone-50 hover:bg-amber-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#EAB308] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E2')" class="p-3 rounded-lg bg-stone-50 hover:bg-amber-50 border border-stone-200 border-l-4 border-l-[#EAB308] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 2</span>
                 <span class="text-[10px] text-stone-500 font-medium">Amarillo • Est. Puerto</span>
               </div>
             </button>
-            <button onclick="focusCornerOnBoard('E3')" class="p-3 rounded-2xl bg-stone-50 hover:bg-pink-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#E85C90] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E3')" class="p-3 rounded-lg bg-stone-50 hover:bg-pink-50 border border-stone-200 border-l-4 border-l-[#E85C90] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 3</span>
                 <span class="text-[10px] text-stone-500 font-medium">Rosado • Cochrane N.</span>
               </div>
             </button>
-            <button onclick="focusCornerOnBoard('E4')" class="p-3 rounded-2xl bg-stone-50 hover:bg-emerald-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#2EAA62] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E4')" class="p-3 rounded-lg bg-stone-50 hover:bg-emerald-50 border border-stone-200 border-l-4 border-l-[#2EAA62] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 4</span>
                 <span class="text-[10px] text-stone-500 font-medium">Verde • Cochrane S.</span>
               </div>
             </button>
-            <button onclick="focusCornerOnBoard('E5')" class="p-3 rounded-2xl bg-stone-50 hover:bg-blue-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#1E56C6] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E5')" class="p-3 rounded-lg bg-stone-50 hover:bg-blue-50 border border-stone-200 border-l-4 border-l-[#1E56C6] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 5</span>
                 <span class="text-[10px] text-stone-500 font-medium">Azul • Prat Sur</span>
               </div>
             </button>
-            <button onclick="focusCornerOnBoard('E6')" class="p-3 rounded-2xl bg-stone-50 hover:bg-red-50 border border-stone-200 flex items-center gap-2.5 text-left transition">
-              <span class="w-4 h-4 rounded-full bg-[#E03131] shrink-0 shadow-sm"></span>
+            <button onclick="focusCornerOnBoard('E6')" class="p-3 rounded-lg bg-stone-50 hover:bg-red-50 border border-stone-200 border-l-4 border-l-[#E03131] flex items-center gap-2.5 text-left transition">
               <div>
                 <span class="block text-neutral-900">Esquina 6</span>
                 <span class="text-[10px] text-stone-500 font-medium">Rojo • Armada / Prat</span>
@@ -418,13 +525,13 @@
           </div>
         </div>
 
-        <!-- Bloque B: Los 5 Pictogramas Propios (Stickers en Vinilo) -->
-        <div class="lg:col-span-5 p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <!-- Bloque B: Los 5 Pictogramas Propios -->
+        <div class="lg:col-span-5 p-6 rounded-xl mica-sheet-card flex flex-col justify-between space-y-5">
           <div class="space-y-2">
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Variable 02 • Contratiempos en Ruta</span>
-            <h3 class="text-xl font-extrabold uppercase text-neutral-900">Stickers con Pictogramas Propios</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400">Variable 02 • Contratiempos en Ruta</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Stickers con Pictogramas Propios</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
-              Sobre su trazo de plumón, cada persona adhiere stickers impresos en vinilo en el punto exacto del mapa donde experimentó una dificultad (haz clic en cualquiera para filtrarlo en el tablero):
+              Sobre su recorrido trazado, cada persona adhiere stickers circulares en el punto exacto del mapa donde experimentó una dificultad (haz clic en cualquiera para filtrarlo en el tablero):
             </p>
           </div>
           <div id="codificacionPictogramsList" class="space-y-2">
@@ -433,22 +540,22 @@
         </div>
 
         <!-- Bloque C: Lámina Explotada del Dispositivo Físico -->
-        <div class="lg:col-span-3 p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-4">
+        <div class="lg:col-span-3 p-6 rounded-xl mica-sheet-card flex flex-col justify-between space-y-4">
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Variable 03 • Superposición</span>
-            <h3 class="text-lg font-extrabold uppercase text-neutral-900">Arquitectura Multicapa</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400">Variable 03 • Superposición</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Arquitectura Multicapa</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
-              Base de trovicel con mapa en vinilo, 6 láminas de mica perforadas en 4 palitos de soporte, cubierta de acrílico grabada al tacto y panel de instrucciones de 19×41 cm.
+              Base de trovicel con mapa base, 6 láminas de mica perforadas en 4 soportes, cubierta de acrílico grabada al tacto y panel de instrucciones lateral.
             </p>
           </div>
           <div class="space-y-2">
-            <div onclick="openLightbox('assets/prototipo_explotado.jpg', 'Prototipo Final v8: Vista explotada y armada de las 6 micas')" class="rounded-2xl overflow-hidden border border-stone-200 cursor-zoom-in group relative bg-white">
+            <div onclick="openLightbox('assets/prototipo_explotado.jpg', 'Prototipo Final v8: Vista explotada y armada de las 6 micas')" class="rounded-lg overflow-hidden border border-stone-200 cursor-zoom-in group relative bg-white">
               <img src="assets/prototipo_explotado.jpg" onerror="this.src='https://wiki-ead.b-cdn.net/images/4/46/PPBS_prototipo_visualizacion_grupo_4_v8_explotada_y_armada.png'" alt="Prototipo Explotado Grupo 4" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" />
-              <span class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/75 text-white text-[10px] font-bold">Ampliar lámina</span>
+              <span class="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-black/80 text-white text-[10px] font-bold">Ampliar lámina</span>
             </div>
-            <div onclick="openLightbox('assets/dispositivo_mesa.jpg', 'Dispositivo físico armado con las 6 micas superpuestas en Plaza Sotomayor')" class="rounded-2xl overflow-hidden border border-stone-200 cursor-zoom-in group relative bg-stone-900">
+            <div onclick="openLightbox('assets/dispositivo_mesa.jpg', 'Dispositivo físico armado con las 6 micas superpuestas en Plaza Sotomayor')" class="rounded-lg overflow-hidden border border-stone-200 cursor-zoom-in group relative bg-stone-900">
               <img src="assets/dispositivo_mesa.jpg" onerror="this.src='https://wiki-ead.b-cdn.net/images/8/8d/Flujo_superpuesto_plaza_soto_mayor.jpeg'" alt="Dispositivo Físico en Mesa" class="w-full h-28 object-cover group-hover:scale-105 transition duration-300" />
-              <span class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/75 text-white text-[10px] font-bold">Ver foto real</span>
+              <span class="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-black/80 text-white text-[10px] font-bold">Ver foto real</span>
             </div>
           </div>
         </div>
@@ -456,26 +563,29 @@
     </section>
 
     <!-- =====================================================================
-         02. DISPOSITIVO DIGITALIZADO INTERACTIVO (TABLERO + PARTÍCULAS + 3D + EDITOR)
+         LÁMINA II: DISPOSITIVO DIGITALIZADO INTERACTIVO (TABLERO + PARTÍCULAS + 3D + EDITOR)
          ===================================================================== -->
-    <section id="tablero" class="py-16 sm:py-20 border-b border-stone-200 space-y-8">
-      <div class="space-y-2 max-w-4xl">
-        <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-taupe block">
-          02 • Gemelo Digital del Dispositivo de Recolección
-        </span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 leading-tight">
-          Tablero Interactivo de Flujos y Fricciones
-        </h2>
-        <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+    <section id="tablero" class="py-16 sm:py-20 border-b border-stone-300 space-y-8">
+      <div class="border-t-2 border-neutral-900 pt-4 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-[0.18em] text-stone-500">
+            <span class="px-2 py-0.5 rounded bg-neutral-900 text-white">LÁMINA II</span>
+            <span>GEMELO DIGITAL DEL DISPOSITIVO DE RECOLECCIÓN</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-neutral-900 leading-tight">
+            Tablero Interactivo de Flujos y Fricciones
+          </h2>
+        </div>
+        <p class="lg:max-w-xl text-sm text-stone-600 leading-relaxed">
           Explora las <strong>6 láminas de mica</strong> de forma conjunta o esquina por esquina, filtra por <strong>tipo de dificultad</strong>, alterna entre las <strong>4 formas de visualización</strong> inferiores y usa el <strong>Modo Autor</strong> para digitalizar nuevos recorridos y stickers en tiempo real.
         </p>
       </div>
 
       <!-- SELECTOR DESTACADO DE LOS 4 MODOS DE VISUALIZACIÓN -->
-      <div class="p-4 sm:p-5 rounded-3xl bg-stone-200/75 border-2 border-stone-300/90 space-y-3">
+      <div class="p-4 sm:p-5 rounded-xl bg-stone-200/80 border border-stone-300 space-y-3">
         <div class="flex items-center justify-between gap-2 px-1">
-          <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-neutral-800 flex items-center gap-2">
-            <i class="ph-bold ph-eye text-base text-taupe"></i>
+          <span class="text-[11px] font-display font-bold uppercase tracking-[0.16em] text-neutral-900 flex items-center gap-2">
+            <i class="ph-bold ph-eye text-base text-neutral-900"></i>
             <span>Selecciona el Modo de Visualización del Dispositivo (4 Vistas)</span>
           </span>
           <span class="hidden sm:inline text-[11px] font-semibold text-stone-600">
@@ -484,42 +594,42 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <button id="btnMode2D" onclick="setBoardMode('2d')" class="p-4 rounded-2xl text-left bg-neutral-900 text-white shadow-md border-2 border-neutral-900 transition flex items-start gap-3.5 group">
-            <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-lg">
+          <button id="btnMode2D" onclick="setBoardMode('2d')" class="p-4 rounded-xl text-left bg-neutral-900 text-white shadow-md border-2 border-neutral-900 transition flex items-start gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center shrink-0 text-lg">
               <i class="ph-bold ph-scribble-loop"></i>
             </div>
             <div>
-              <span class="block text-xs font-black uppercase tracking-wider">1. Tablero 2D</span>
+              <span class="block text-xs font-display font-bold uppercase tracking-wider">1. Tablero 2D</span>
               <span class="block text-[11px] opacity-80 font-medium mt-0.5 leading-snug">Líneas de flujo dibujadas y stickers por esquina</span>
             </div>
           </button>
 
-          <button id="btnModeParticles" onclick="setBoardMode('particles')" class="p-4 rounded-2xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
-            <div class="w-10 h-10 rounded-xl bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
+          <button id="btnModeParticles" onclick="setBoardMode('particles')" class="p-4 rounded-xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
               <i class="ph-bold ph-sparkle"></i>
             </div>
             <div>
-              <span class="block text-xs font-black uppercase tracking-wider">2. Flujo Partículas</span>
+              <span class="block text-xs font-display font-bold uppercase tracking-wider">2. Flujo Partículas</span>
               <span class="block text-[11px] opacity-75 font-medium mt-0.5 leading-snug">Simulación en movimiento con control de velocidad y mapa</span>
             </div>
           </button>
 
-          <button id="btnMode3D" onclick="setBoardMode('3d')" class="p-4 rounded-2xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
-            <div class="w-10 h-10 rounded-xl bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
+          <button id="btnMode3D" onclick="setBoardMode('3d')" class="p-4 rounded-xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
               <i class="ph-bold ph-stack"></i>
             </div>
             <div>
-              <span class="block text-xs font-black uppercase tracking-wider">3. Capas 3D (Micas)</span>
+              <span class="block text-xs font-display font-bold uppercase tracking-wider">3. Capas 3D (Micas)</span>
               <span class="block text-[11px] opacity-75 font-medium mt-0.5 leading-snug">Despiece isométrico de las 6 láminas superpuestas</span>
             </div>
           </button>
 
-          <button id="btnModePhotos" onclick="setBoardMode('photos')" class="p-4 rounded-2xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
-            <div class="w-10 h-10 rounded-xl bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
+          <button id="btnModePhotos" onclick="setBoardMode('photos')" class="p-4 rounded-xl text-left bg-white hover:bg-stone-50 text-neutral-900 border-2 border-stone-300 hover:border-neutral-900 transition flex items-start gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-stone-100 group-hover:bg-neutral-900 group-hover:text-white flex items-center justify-center shrink-0 text-lg transition">
               <i class="ph-bold ph-camera"></i>
             </div>
             <div>
-              <span class="block text-xs font-black uppercase tracking-wider">4. Fotos Micas Reales</span>
+              <span class="block text-xs font-display font-bold uppercase tracking-wider">4. Fotos Micas Reales</span>
               <span class="block text-[11px] opacity-75 font-medium mt-0.5 leading-snug">Registro fotográfico original de las 6 micas en terreno</span>
             </div>
           </button>
@@ -527,18 +637,18 @@
       </div>
 
       <!-- Barra de Controles del Tablero: Territorio | Capas de Mica (E1-E6) | Controles de Flujos y Stickers -->
-      <div class="p-5 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-4">
-        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-stone-100">
+      <div class="p-5 rounded-xl mica-sheet-card space-y-4">
+        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-stone-200">
           <!-- Selector de Territorio -->
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">
               A. Territorio
             </span>
             <div class="inline-flex flex-wrap gap-2">
-              <button id="btnTerritorySotomayor" onclick="setBoardTerritory('sotomayor')" class="px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2">
+              <button id="btnTerritorySotomayor" onclick="setBoardTerritory('sotomayor')" class="px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white transition flex items-center gap-2">
                 <span>🇨🇱 Plaza Sotomayor (Valparaíso)</span>
               </button>
-              <button id="btnTerritoryMayo" onclick="setBoardTerritory('plaza_de_mayo')" class="px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2">
+              <button id="btnTerritoryMayo" onclick="setBoardTerritory('plaza_de_mayo')" class="px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 transition flex items-center gap-2">
                 <span>🇦🇷 Plaza de Mayo (Buenos Aires)</span>
               </button>
             </div>
@@ -547,35 +657,35 @@
           <!-- Selector de Esquinas: Ver las 6 a la vez o 1 esquina individual -->
           <div class="space-y-1.5">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400">
+              <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400">
                 B. Selección de Esquinas (Elige ver las 6 a la vez o 1 esquina individual)
               </span>
-              <button onclick="toggleFotoUnderlay()" id="btnTogglePhotoUnderlay" class="text-[10px] font-bold uppercase tracking-wider text-taupe hover:underline flex items-center gap-1">
+              <button onclick="toggleFotoUnderlay()" id="btnTogglePhotoUnderlay" class="text-[10px] font-display font-bold uppercase tracking-wider text-neutral-900 hover:underline flex items-center gap-1">
                 <i class="ph-bold ph-image"></i>
                 <span id="photoUnderlayText">Calcar foto real de mica: OFF</span>
               </button>
             </div>
             <div class="flex flex-wrap gap-1.5" id="cornerLayerButtons">
-              <button onclick="setCornerFilter('ALL')" data-corner="ALL" class="corner-filter-btn px-3.5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white transition">
+              <button onclick="setCornerFilter('ALL')" data-corner="ALL" class="corner-filter-btn px-3.5 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white transition">
                 Ver las 6 Esquinas a la vez
               </button>
-              <button onclick="setCornerFilter('E1')" data-corner="E1" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#29A9E1]"></span>1. Celeste (E1)
+              <button onclick="setCornerFilter('E1')" data-corner="E1" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#29A9E1]"></span>1. Celeste (E1)
               </button>
-              <button onclick="setCornerFilter('E2')" data-corner="E2" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#EAB308]"></span>2. Amarillo (E2)
+              <button onclick="setCornerFilter('E2')" data-corner="E2" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#EAB308]"></span>2. Amarillo (E2)
               </button>
-              <button onclick="setCornerFilter('E3')" data-corner="E3" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#E85C90]"></span>3. Rosado (E3)
+              <button onclick="setCornerFilter('E3')" data-corner="E3" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#E85C90]"></span>3. Rosado (E3)
               </button>
-              <button onclick="setCornerFilter('E4')" data-corner="E4" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#2EAA62]"></span>4. Verde (E4)
+              <button onclick="setCornerFilter('E4')" data-corner="E4" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#2EAA62]"></span>4. Verde (E4)
               </button>
-              <button onclick="setCornerFilter('E5')" data-corner="E5" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#1E56C6]"></span>5. Azul (E5)
+              <button onclick="setCornerFilter('E5')" data-corner="E5" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#1E56C6]"></span>5. Azul (E5)
               </button>
-              <button onclick="setCornerFilter('E6')" data-corner="E6" class="corner-filter-btn px-3 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
-                <span class="w-3 h-3 rounded-full bg-[#E03131]"></span>6. Rojo (E6)
+              <button onclick="setCornerFilter('E6')" data-corner="E6" class="corner-filter-btn px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-stone-700 border border-stone-300 hover:border-neutral-900 flex items-center gap-1.5 transition">
+                <span class="w-3 h-3 rounded-sm bg-[#E03131]"></span>6. Rojo (E6)
               </button>
             </div>
           </div>
@@ -584,58 +694,58 @@
         <!-- Segunda fila: Control de Líneas de Flujo 2D + Filtro de Stickers + Controles de Velocidad y Mapa en Partículas -->
         <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">
               C. Filtrar por Pictograma de Dificultad (Stickers)
             </span>
             <div class="flex flex-wrap gap-1.5" id="stickerCategoryButtons">
-              <button onclick="setStickerFilter('ALL')" data-st="ALL" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-taupe text-white transition">
+              <button onclick="setStickerFilter('ALL')" data-st="ALL" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider bg-taupe text-white transition">
                 Todos los Stickers
               </button>
-              <button onclick="setStickerFilter('vehiculos')" data-st="vehiculos" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
+              <button onclick="setStickerFilter('vehiculos')" data-st="vehiculos" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
                 🚗 Tránsito de vehículos
               </button>
-              <button onclick="setStickerFilter('senalizacion')" data-st="senalizacion" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
+              <button onclick="setStickerFilter('senalizacion')" data-st="senalizacion" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
                 🪧 Falta de señalización
               </button>
-              <button onclick="setStickerFilter('personas')" data-st="personas" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
+              <button onclick="setStickerFilter('personas')" data-st="personas" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
                 👥 Personas en vereda
               </button>
-              <button onclick="setStickerFilter('espacio')" data-st="espacio" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
+              <button onclick="setStickerFilter('espacio')" data-st="espacio" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
                 ↔️ Falta de espacio peatonal
               </button>
-              <button onclick="setStickerFilter('cruce')" data-st="cruce" class="st-filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
+              <button onclick="setStickerFilter('cruce')" data-st="cruce" class="st-filter-btn px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition">
                 🚷 Dificultad para cruzar
               </button>
             </div>
           </div>
 
           <!-- Controles exclusivos para Vista Tablero 2D: Activar/Mostrar Flujos Dibujados y Animar Trazos -->
-          <div id="subControls2D" class="flex items-center gap-2 flex-wrap bg-stone-100 px-4 py-2.5 rounded-2xl border border-stone-200">
-            <span class="text-[10px] font-extrabold uppercase tracking-wider text-stone-500">Flujos 2D:</span>
-            <button id="btnToggleDrawnFlows" onclick="toggleDrawnFlows2D()" class="px-3 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-neutral-900 text-white flex items-center gap-1.5 transition shadow-sm">
+          <div id="subControls2D" class="flex items-center gap-2 flex-wrap bg-stone-100 px-4 py-2.5 rounded-xl border border-stone-200">
+            <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-500">Flujos 2D:</span>
+            <button id="btnToggleDrawnFlows" onclick="toggleDrawnFlows2D()" class="px-3 py-1.5 rounded-lg text-[11px] font-display font-bold uppercase tracking-wider bg-neutral-900 text-white flex items-center gap-1.5 transition shadow-sm">
               <i class="ph-bold ph-scribble-loop"></i>
               <span id="drawnFlowsBtnText">Líneas de Flujo: Visibles</span>
             </button>
-            <button onclick="animateDrawnFlows2D()" class="px-3 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-white hover:bg-stone-200 text-neutral-900 border border-stone-300 flex items-center gap-1.5 transition">
+            <button onclick="animateDrawnFlows2D()" class="px-3 py-1.5 rounded-lg text-[11px] font-display font-bold uppercase tracking-wider bg-white hover:bg-stone-200 text-neutral-900 border border-stone-300 flex items-center gap-1.5 transition">
               <i class="ph-fill ph-play"></i>
               <span>Animar Trazado</span>
             </button>
           </div>
 
           <!-- Controles exclusivos para Vista Partículas: Velocidad + Mapa con baja opacidad -->
-          <div id="subControlsParticles" class="hidden items-center gap-3 flex-wrap bg-stone-900 text-white px-4 py-2.5 rounded-2xl">
+          <div id="subControlsParticles" class="hidden items-center gap-3 flex-wrap bg-stone-900 text-white px-4 py-2.5 rounded-xl">
             <div class="flex items-center gap-1.5">
               <span class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Velocidad:</span>
-              <button onclick="setParticleSpeed(0.25)" data-pspeed="0.25" class="pspeed-btn px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">0.25x Lento</button>
-              <button onclick="setParticleSpeed(0.5)" data-pspeed="0.5" class="pspeed-btn px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">0.5x Suave</button>
-              <button onclick="setParticleSpeed(1)" data-pspeed="1" class="pspeed-btn px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-500 text-neutral-950 transition">1x Normal</button>
-              <button onclick="setParticleSpeed(2)" data-pspeed="2" class="pspeed-btn px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">2x Rápido</button>
+              <button onclick="setParticleSpeed(0.25)" data-pspeed="0.25" class="pspeed-btn px-2.5 py-1 rounded-md text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">0.25x Lento</button>
+              <button onclick="setParticleSpeed(0.5)" data-pspeed="0.5" class="pspeed-btn px-2.5 py-1 rounded-md text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">0.5x Suave</button>
+              <button onclick="setParticleSpeed(1)" data-pspeed="1" class="pspeed-btn px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-emerald-500 text-neutral-950 transition">1x Normal</button>
+              <button onclick="setParticleSpeed(2)" data-pspeed="2" class="pspeed-btn px-2.5 py-1 rounded-md text-[10px] font-bold bg-white/10 hover:bg-white/20 text-stone-300 transition">2x Rápido</button>
             </div>
 
             <div class="h-4 w-px bg-white/20 hidden sm:block"></div>
 
             <div class="flex items-center gap-2">
-              <button id="btnToggleParticleMap" onclick="toggleParticleMapOverlay()" class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-sky-500/25 border border-sky-400 text-sky-200 flex items-center gap-1.5 transition">
+              <button id="btnToggleParticleMap" onclick="toggleParticleMapOverlay()" class="px-3 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-sky-500/25 border border-sky-400 text-sky-200 flex items-center gap-1.5 transition">
                 <i class="ph-bold ph-map-trifold"></i>
                 <span id="particleMapBtnText">Mapa Base: ON (Suave)</span>
               </button>
@@ -646,7 +756,7 @@
             </div>
           </div>
 
-          <div id="subControls3D" class="hidden items-center gap-4 flex-wrap bg-stone-100 px-4 py-2 rounded-2xl border border-stone-200">
+          <div id="subControls3D" class="hidden items-center gap-4 flex-wrap bg-stone-100 px-4 py-2 rounded-xl border border-stone-200">
             <label class="text-[11px] font-bold text-stone-700 flex items-center gap-2">
               <span>Separación Micas:</span>
               <input id="slider3DGap" type="range" min="12" max="58" value="34" oninput="update3DStackTransform()" class="w-24 accent-neutral-900" />
@@ -948,13 +1058,13 @@
       <!-- RESUMEN CUANTITATIVO EN TIEMPO REAL DEL TABLERO DE MICAS (SE ACTUALIZA AL AÑADIR TRAZOS O STICKERS) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
         <!-- Distribución de Stickers por Esquina -->
-        <div class="lg:col-span-7 p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-4">
+        <div class="lg:col-span-7 p-6 rounded-xl mica-sheet-card space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Lectura Automática de Micas</span>
-              <h3 class="text-lg font-extrabold uppercase text-neutral-900">Concentración de Recorridos y Stickers por Esquina</h3>
+              <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">Lectura Automática de Micas</span>
+              <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Concentración de Recorridos y Stickers por Esquina</h3>
             </div>
-            <span id="micaSummaryTerritoryLabel" class="px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-[11px] font-bold">Plaza Sotomayor</span>
+            <span id="micaSummaryTerritoryLabel" class="px-3 py-1 rounded-md bg-stone-100 text-stone-700 text-[11px] font-bold">Plaza Sotomayor</span>
           </div>
           <div id="micaCornerBreakdownBars" class="space-y-3">
             <!-- Barras por esquina E1-E6 -->
@@ -962,10 +1072,10 @@
         </div>
 
         <!-- Ranking de los 5 Pictogramas en el Tablero -->
-        <div class="lg:col-span-5 p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-4">
+        <div class="lg:col-span-5 p-6 rounded-xl mica-sheet-card space-y-4">
           <div>
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Fricciones Espaciales</span>
-            <h3 class="text-lg font-extrabold uppercase text-neutral-900">Desglose por Tipo de Sticker en Placa</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">Fricciones Espaciales</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Desglose por Tipo de Sticker en Placa</h3>
           </div>
           <div id="micaStickerTypeBreakdown" class="space-y-2.5">
             <!-- Conteo y % por cada uno de los 5 pictogramas -->
@@ -975,28 +1085,29 @@
     </section>
 
     <!-- =====================================================================
-         03. FASE 2: LEVANTAMIENTO CUANTITATIVO SISTEMÁTICO (10 SALIDAS DE 10 MINUTOS)
+         LÁMINA III: LEVANTAMIENTO CUANTITATIVO SISTEMÁTICO (10 SALIDAS DE 10 MINUTOS)
          ===================================================================== -->
-    <section id="cuantitativo" class="py-16 sm:py-20 border-b border-stone-200 space-y-12">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-        <div class="space-y-2.5 max-w-3xl">
-          <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-taupe block">
-            03 • Fase 2: Levantamiento Cuantitativo Sistemático (Segunda Salida)
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 leading-tight">
+    <section id="cuantitativo" class="py-16 sm:py-20 border-b border-stone-300 space-y-10">
+      <div class="border-t-2 border-neutral-900 pt-4 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-2 max-w-3xl">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-[0.18em] text-stone-500">
+            <span class="px-2 py-0.5 rounded bg-neutral-900 text-white">LÁMINA III</span>
+            <span>LEVANTAMIENTO CUANTITATIVO SISTEMÁTICO (SEGUNDA SALIDA)</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-neutral-900 leading-tight">
             10 Salidas de 10 Minutos por Esquina (E1–E6)
           </h2>
-          <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p class="text-sm text-stone-600 leading-relaxed">
             Consolidado conectado en tiempo real con nuestras <strong>4 planillas de observación sistemática</strong>: Desplazamientos Peatonales, Transporte Público (micros y espera en paradero) y Tránsito Vehicular / Cruces Formales vs. Informales.
           </p>
         </div>
 
         <div class="flex flex-wrap gap-2">
-          <button onclick="syncAllGoogleSheetsLive(true)" class="px-4 py-2.5 rounded-full bg-neutral-900 hover:bg-taupe text-white text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 transition shadow-sm">
+          <button onclick="syncAllGoogleSheetsLive(true)" class="px-4 py-2.5 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-xs font-display font-bold uppercase tracking-wider inline-flex items-center gap-2 transition shadow-sm">
             <i class="ph-bold ph-arrows-clockwise"></i>
             <span>Actualizar desde Google Sheets</span>
           </button>
-          <a href="https://docs.google.com/spreadsheets/d/1wmw-Nwgk7n2uv59c75qHmsJE7OCENLwLI_ll67eg0w8/edit" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-full bg-white hover:bg-stone-100 text-neutral-900 border border-stone-300 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 transition">
+          <a href="https://docs.google.com/spreadsheets/d/1wmw-Nwgk7n2uv59c75qHmsJE7OCENLwLI_ll67eg0w8/edit" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-white hover:bg-stone-100 text-neutral-900 border border-stone-300 text-xs font-display font-bold uppercase tracking-wider inline-flex items-center gap-1.5 transition">
             <span>Abrir Planilla Resumen</span>
             <i class="ph-bold ph-arrow-up-right"></i>
           </a>
@@ -1006,48 +1117,48 @@
       <!-- 3 Hallazgos Consolidados de las 10 Salidas (Gráficos Interactivos) -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Gráfico 1: Flujo Peatonal y Pausa por Esquina -->
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#29A9E1] flex flex-col justify-between space-y-5">
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-e1 block">Dimensión 01 • Peatones (539 min)</span>
-            <h3 class="text-lg font-extrabold uppercase text-neutral-900">Flujo Peatonal vs. Tasa de Pausa</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-e1 block">Dimensión 01 • Peatones (539 min)</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Flujo Peatonal vs. Tasa de Pausa</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
               <strong>E1 (26,5/min)</strong> y <strong>E2 (26,4/min)</strong> lideran el flujo total, pero la pausa oscila solo entre el <strong>5,1% y 11,1%</strong>, concentrada en paraderos y bordes comerciales (E3 y E4).
             </p>
           </div>
           <div id="chartQuantPeatones" class="space-y-3 pt-2"></div>
-          <a href="https://docs.google.com/spreadsheets/d/17fiWklikZvoVpTo2-djxpUENV7Kv33khX_7QM9dLfoo/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-taupe hover:underline inline-flex items-center gap-1">
+          <a href="https://docs.google.com/spreadsheets/d/17fiWklikZvoVpTo2-djxpUENV7Kv33khX_7QM9dLfoo/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-neutral-900 hover:underline inline-flex items-center gap-1">
             <span>Ver 01_Registro_Peatonal en Google Sheets</span>
             <i class="ph-bold ph-arrow-up-right"></i>
           </a>
         </div>
 
         <!-- Gráfico 2: Transporte Público en Esquinas con Paradero (E1, E3, E4) -->
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#E85C90] flex flex-col justify-between space-y-5">
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-e3 block">Dimensión 02 • Transporte Público (300 min)</span>
-            <h3 class="text-lg font-extrabold uppercase text-neutral-900">Presión de Micros y Acumulación</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-e3 block">Dimensión 02 • Transporte Público (300 min)</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Presión de Micros y Acumulación</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
               Las esquinas con paradero (<strong>E1, E3 y E4</strong>) reciben hasta <strong>1,8 micros/min</strong>, generando acumulaciones críticas de hasta <strong>19 personas esperando en E3</strong> y <strong>13 en E4</strong>.
             </p>
           </div>
           <div id="chartQuantTransporte" class="space-y-4 pt-2"></div>
-          <a href="https://docs.google.com/spreadsheets/d/1A1HSX7Tp4cqeiX3KcFg1a5TG-fGuZrH0RLUczJMlihA/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-taupe hover:underline inline-flex items-center gap-1">
+          <a href="https://docs.google.com/spreadsheets/d/1A1HSX7Tp4cqeiX3KcFg1a5TG-fGuZrH0RLUczJMlihA/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-neutral-900 hover:underline inline-flex items-center gap-1">
             <span>Ver 02_Transporte_Plaza_Sotomayor en Google Sheets</span>
             <i class="ph-bold ph-arrow-up-right"></i>
           </a>
         </div>
 
         <!-- Gráfico 3: Tensión Vehicular y % Cruces por Otro Lugar -->
-        <div class="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="p-6 rounded-xl mica-sheet-card border-t-4 border-t-[#2EAA62] flex flex-col justify-between space-y-5">
           <div class="space-y-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-e4 block">Dimensión 03 • Vehículos y Cruces (601 min)</span>
-            <h3 class="text-lg font-extrabold uppercase text-neutral-900">Cruces Habilitados vs. Informales</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-e4 block">Dimensión 03 • Vehículos y Cruces (601 min)</span>
+            <h3 class="text-lg font-display font-bold uppercase text-neutral-900">Cruces Habilitados vs. Informales</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
               Ante un flujo constante de <strong>8,4 a 16,0 vehículos/min</strong>, en <strong>E4 el 56%</strong> de los peatones cruza por fuera del paso habilitado, en <strong>E6 el 49%</strong> y en <strong>E5 el 44%</strong>.
             </p>
           </div>
           <div id="chartQuantCruces" class="space-y-3 pt-2"></div>
-          <a href="https://docs.google.com/spreadsheets/d/1Izr23DM7c-tZtSBcuK9xwzKCimHajPlswnWErQauY9E/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-taupe hover:underline inline-flex items-center gap-1">
+          <a href="https://docs.google.com/spreadsheets/d/1Izr23DM7c-tZtSBcuK9xwzKCimHajPlswnWErQauY9E/edit" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-neutral-900 hover:underline inline-flex items-center gap-1">
             <span>Ver 03_Vehiculos_Plaza_Sotomayor en Google Sheets</span>
             <i class="ph-bold ph-arrow-up-right"></i>
           </a>
@@ -1055,20 +1166,20 @@
       </div>
 
       <!-- TABLA CONSOLIDADA MULTIVARIABLE + EXPLORADOR DE LAS 10 SALIDAS POR SESIÓN + VISOR EN VIVO MINUTO A MINUTO -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-6">
+      <div class="p-6 sm:p-8 rounded-xl mica-sheet-card space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200 pb-4">
           <div>
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Datos Conectados a Google Sheets</span>
-            <h3 class="text-xl font-extrabold uppercase text-neutral-900">Explorador de Matrices de Observación</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">Datos Conectados a Google Sheets</span>
+            <h3 class="text-xl font-display font-bold uppercase text-neutral-900">Explorador de Matrices de Observación</h3>
           </div>
-          <div class="inline-flex flex-wrap gap-1.5 p-1 rounded-2xl bg-stone-100 border border-stone-200">
-            <button id="quantTabResumen" onclick="switchQuantSubTab('resumen')" class="px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-neutral-900 text-white transition">
+          <div class="inline-flex flex-wrap gap-1.5 p-1 rounded-lg bg-stone-100 border border-stone-200">
+            <button id="quantTabResumen" onclick="switchQuantSubTab('resumen')" class="px-4 py-2 rounded-md text-xs font-display font-bold uppercase tracking-wider bg-neutral-900 text-white transition">
               1. Resumen Consolidado (E1–E6)
             </button>
-            <button id="quantTabSesiones" onclick="switchQuantSubTab('sesiones')" class="px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-stone-600 hover:text-neutral-900 transition">
+            <button id="quantTabSesiones" onclick="switchQuantSubTab('sesiones')" class="px-4 py-2 rounded-md text-xs font-display font-bold uppercase tracking-wider text-stone-600 hover:text-neutral-900 transition">
               2. Por Salida (Salidas 1 a 10)
             </button>
-            <button id="quantTabRaw" onclick="switchQuantSubTab('raw')" class="px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-stone-600 hover:text-neutral-900 transition">
+            <button id="quantTabRaw" onclick="switchQuantSubTab('raw')" class="px-4 py-2 rounded-md text-xs font-display font-bold uppercase tracking-wider text-stone-600 hover:text-neutral-900 transition">
               3. Planillas Minuto a Minuto (En Vivo)
             </button>
           </div>
@@ -1078,8 +1189,8 @@
         <div id="quantPanelResumen" class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
-              <tr class="bg-taupe text-white uppercase tracking-wider text-[10px]">
-                <th class="py-3.5 px-4 rounded-tl-xl">Esquina</th>
+              <tr class="bg-neutral-900 text-white uppercase tracking-wider text-[10px]">
+                <th class="py-3.5 px-4 rounded-tl-lg">Esquina</th>
                 <th class="py-3.5 px-4">Min. Obs.</th>
                 <th class="py-3.5 px-4">Peatones / min</th>
                 <th class="py-3.5 px-4">Pausa / min (%)</th>
@@ -1087,7 +1198,7 @@
                 <th class="py-3.5 px-4">Espera Paradero (Prom / Máx)</th>
                 <th class="py-3.5 px-4">Vehículos / min</th>
                 <th class="py-3.5 px-4">Cruces / min (Hab. vs Otro)</th>
-                <th class="py-3.5 px-4 rounded-tr-xl">% Cruce Informal</th>
+                <th class="py-3.5 px-4 rounded-tr-lg">% Cruce Informal</th>
               </tr>
             </thead>
             <tbody id="quantResumenTableBody" class="divide-y divide-stone-200">
@@ -1101,7 +1212,7 @@
           <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap items-center gap-2">
               <span class="text-xs font-bold uppercase text-stone-500">Variable por Salida:</span>
-              <select id="sessionMetricSelect" onchange="renderSessionsComparisonTable()" class="rounded-xl bg-stone-50 border border-stone-300 px-3.5 py-2 text-xs font-bold text-neutral-900">
+              <select id="sessionMetricSelect" onchange="renderSessionsComparisonTable()" class="rounded-lg bg-stone-50 border border-stone-300 px-3.5 py-2 text-xs font-bold text-neutral-900">
                 <option value="peatones_flujo">Peatones por minuto (Salidas 1 a 10)</option>
                 <option value="peatones_pausa">Personas en pausa por minuto (Salidas 1 a 10)</option>
                 <option value="transporte_micros">Micros que pasan por minuto (E1, E3, E4)</option>
@@ -1118,11 +1229,11 @@
 
         <!-- Sub-panel 3: Visor en Vivo de las Planillas Minuto a Minuto -->
         <div id="quantPanelRaw" class="hidden space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-stone-50 border border-stone-200">
+          <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-stone-50 border border-stone-200">
             <div class="flex flex-wrap items-center gap-3">
               <label class="text-xs font-bold text-stone-700 flex items-center gap-2">
                 <span>Planilla Google Sheets:</span>
-                <select id="rawSheetBookSelect" onchange="loadLiveRawCornerSheet()" class="rounded-xl bg-white border border-stone-300 px-3 py-2 text-xs font-bold">
+                <select id="rawSheetBookSelect" onchange="loadLiveRawCornerSheet()" class="rounded-lg bg-white border border-stone-300 px-3 py-2 text-xs font-bold">
                   <option value="peatonal">01 · Registro Peatonal (Direcciones A, B, C, D y Pausas)</option>
                   <option value="transporte">02 · Transporte Público (Llegadas, Espera, Suben)</option>
                   <option value="vehicular">03 · Tránsito Vehicular y Cruces (Particulares, Taxis, Micros, Cruces)</option>
@@ -1130,7 +1241,7 @@
               </label>
               <label class="text-xs font-bold text-stone-700 flex items-center gap-2">
                 <span>Pestaña Esquina:</span>
-                <select id="rawSheetCornerSelect" onchange="loadLiveRawCornerSheet()" class="rounded-xl bg-white border border-stone-300 px-3 py-2 text-xs font-bold">
+                <select id="rawSheetCornerSelect" onchange="loadLiveRawCornerSheet()" class="rounded-lg bg-white border border-stone-300 px-3 py-2 text-xs font-bold">
                   <option value="E1">Esquina E1</option>
                   <option value="E2">Esquina E2</option>
                   <option value="E3">Esquina E3</option>
@@ -1139,35 +1250,36 @@
                   <option value="E6">Esquina E6</option>
                 </select>
               </label>
-              <button onclick="loadLiveRawCornerSheet(true)" class="px-3.5 py-2 rounded-xl bg-neutral-900 text-white text-xs font-bold hover:bg-taupe transition">
+              <button onclick="loadLiveRawCornerSheet(true)" class="px-3.5 py-2 rounded-lg bg-neutral-900 text-white text-xs font-bold hover:bg-taupe transition">
                 Cargar Filas en Vivo
               </button>
             </div>
             <span id="rawSheetStatusLabel" class="text-xs font-semibold text-emerald-700">Conectado a Google Sheets</span>
           </div>
-          <div id="rawSheetTableContainer" class="max-h-[440px] overflow-auto rounded-2xl border border-stone-200 bg-white"></div>
+          <div id="rawSheetTableContainer" class="max-h-[440px] overflow-auto rounded-xl border border-stone-200 bg-white"></div>
         </div>
       </div>
     </section>
 
     <!-- =====================================================================
-         04. FASE 3: LEVANTAMIENTO CUALITATIVO Y ENCUESTAS EN VIVO (N = 96+)
+         LÁMINA IV: LEVANTAMIENTO CUALITATIVO Y ENCUESTAS EN VIVO (N = 96+)
          ===================================================================== -->
-    <section id="encuestas" class="py-16 sm:py-20 border-b border-stone-200 space-y-12">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-        <div class="space-y-2.5 max-w-3xl">
-          <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-taupe block">
-            04 • Fase 3: Levantamiento Cualitativo y Percepción Ciudadana
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 leading-tight">
+    <section id="encuestas" class="py-16 sm:py-20 border-b border-stone-300 space-y-10">
+      <div class="border-t-2 border-neutral-900 pt-4 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-2 max-w-3xl">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-[0.18em] text-stone-500">
+            <span class="px-2 py-0.5 rounded bg-neutral-900 text-white">LÁMINA IV</span>
+            <span>LEVANTAMIENTO CUALITATIVO Y PERCEPCIÓN CIUDADANA</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-neutral-900 leading-tight">
             Encuesta Plaza Sotomayor (<span id="sectionSurveyTotal">96</span> Usuarios)
           </h2>
-          <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p class="text-sm text-stone-600 leading-relaxed">
             Conectada directamente con la hoja <strong>Respuestas de Encuesta</strong>. Si se agregan nuevas respuestas al formulario o a la planilla, todos los indicadores, gráficos demográficos y el explorador de testimonios se actualizan automáticamente.
           </p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <a href="https://docs.google.com/spreadsheets/d/1PuiA91MugyU2JZVD7D8jNzccyufiYD-4WKlhB2vr2C0/edit" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-full bg-neutral-900 hover:bg-taupe text-white text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 transition">
+          <a href="https://docs.google.com/spreadsheets/d/1PuiA91MugyU2JZVD7D8jNzccyufiYD-4WKlhB2vr2C0/edit" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-xs font-display font-bold uppercase tracking-wider inline-flex items-center gap-2 transition">
             <span>Abrir Planilla de Encuestas</span>
             <i class="ph-bold ph-arrow-up-right"></i>
           </a>
@@ -1182,44 +1294,44 @@
       <!-- Gráficos de la Encuesta (2 Columnas Limpias) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Medio de Transporte y Rango de Edad (6 cols) -->
-        <div class="lg:col-span-6 p-6 sm:p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-6">
+        <div class="lg:col-span-6 p-6 sm:p-7 rounded-xl mica-sheet-card space-y-6">
           <div class="space-y-3">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">Perfil de Acceso</span>
-            <h3 class="text-base font-extrabold uppercase text-neutral-900">Medio de Transporte Utilizado</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">Perfil de Acceso</span>
+            <h3 class="text-base font-display font-bold uppercase text-neutral-900">Medio de Transporte Utilizado</h3>
             <div id="surveyChartTransport" class="space-y-2.5"></div>
           </div>
           <div class="space-y-3 pt-4 border-t border-stone-200">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">Demografía en Terreno</span>
-            <h3 class="text-base font-extrabold uppercase text-neutral-900">Rango de Edad</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">Demografía en Terreno</span>
+            <h3 class="text-base font-display font-bold uppercase text-neutral-900">Rango de Edad</h3>
             <div id="surveyChartAge" class="space-y-2.5"></div>
           </div>
         </div>
 
         <!-- Dificultades Principales y Evaluación de Desplazamiento (6 cols) -->
-        <div class="lg:col-span-6 p-6 sm:p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-6">
+        <div class="lg:col-span-6 p-6 sm:p-7 rounded-xl mica-sheet-card space-y-6">
           <div class="space-y-3">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">Fricciones Percibidas</span>
-            <h3 class="text-base font-extrabold uppercase text-neutral-900">¿Qué Dificulta tu Desplazamiento?</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">Fricciones Percibidas</span>
+            <h3 class="text-base font-display font-bold uppercase text-neutral-900">¿Qué Dificulta tu Desplazamiento?</h3>
             <div id="surveyChartDifficulties" class="space-y-2.5"></div>
           </div>
           <div class="space-y-3 pt-4 border-t border-stone-200">
-            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400 block">Experiencia Peatonal</span>
-            <h3 class="text-base font-extrabold uppercase text-neutral-900">Evaluación del Desplazamiento</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">Experiencia Peatonal</span>
+            <h3 class="text-base font-display font-bold uppercase text-neutral-900">Evaluación del Desplazamiento</h3>
             <div id="surveyChartComfort" class="space-y-2.5"></div>
           </div>
         </div>
       </div>
 
       <!-- Explorador y Buscador en Vivo de las 96+ Respuestas Individuales -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-sm space-y-5">
+      <div class="p-6 sm:p-8 rounded-xl mica-sheet-card space-y-5">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Testimonios y Lugares de Conflicto</span>
-            <h3 class="text-xl font-extrabold uppercase text-neutral-900">Registro Individual de Encuestados (<span id="surveyTableFilteredCount">96</span>)</h3>
+            <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">Testimonios y Lugares de Conflicto</span>
+            <h3 class="text-xl font-display font-bold uppercase text-neutral-900">Registro Individual de Encuestados (<span id="surveyTableFilteredCount">96</span>)</h3>
           </div>
           <div class="flex flex-wrap items-center gap-2.5">
-            <input id="surveySearchInput" type="text" oninput="renderSurveyResponsesTable()" placeholder="Buscar por lugar (ej: blanco, cochrane), ocupación o dificultad..." class="w-64 sm:w-80 rounded-full bg-stone-50 border border-stone-300 px-4 py-2 text-xs font-medium focus:outline-none focus:border-neutral-900" />
-            <select id="surveyFilterTransport" onchange="renderSurveyResponsesTable()" class="rounded-full bg-stone-50 border border-stone-300 px-3.5 py-2 text-xs font-bold">
+            <input id="surveySearchInput" type="text" oninput="renderSurveyResponsesTable()" placeholder="Buscar por lugar (ej: blanco, cochrane), ocupación o dificultad..." class="w-64 sm:w-80 rounded-lg bg-stone-50 border border-stone-300 px-4 py-2 text-xs font-medium focus:outline-none focus:border-neutral-900" />
+            <select id="surveyFilterTransport" onchange="renderSurveyResponsesTable()" class="rounded-lg bg-stone-50 border border-stone-300 px-3.5 py-2 text-xs font-bold">
               <option value="ALL">Todos los transportes</option>
               <option value="Micro / Bus">Micro / Bus</option>
               <option value="Automóvil particular">Automóvil particular</option>
@@ -1230,7 +1342,7 @@
           </div>
         </div>
 
-        <div class="max-h-[420px] overflow-auto rounded-2xl border border-stone-200">
+        <div class="max-h-[420px] overflow-auto rounded-xl border border-stone-200">
           <table class="w-full text-left border-collapse text-xs">
             <thead class="sticky top-0 bg-stone-100 text-stone-700 uppercase text-[10px] border-b border-stone-200">
               <tr>
@@ -1253,19 +1365,20 @@
     </section>
 
     <!-- =====================================================================
-         05. PROYECCIÓN HACIA BUENOS AIRES: COMPARATIVA SOTOMAYOR ↔ PLAZA DE MAYO
+         LÁMINA V: PROYECCIÓN HACIA BUENOS AIRES: COMPARATIVA SOTOMAYOR ↔ PLAZA DE MAYO
          ===================================================================== -->
-    <section id="buenosaires" class="py-16 sm:py-20 space-y-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-        <div class="lg:col-span-7 space-y-2.5">
-          <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-taupe block">
-            05 • Proyección Internacional y Homología Metodológica
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 leading-tight">
+    <section id="buenosaires" class="py-16 sm:py-20 space-y-10">
+      <div class="border-t-2 border-neutral-900 pt-4 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-[0.18em] text-stone-500">
+            <span class="px-2 py-0.5 rounded bg-neutral-900 text-white">LÁMINA V</span>
+            <span>PROYECCIÓN INTERNACIONAL Y HOMOLOGÍA METODOLÓGICA</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-neutral-900 leading-tight">
             Valparaíso (Plaza Sotomayor) ↔ Buenos Aires (Plaza de Mayo)
           </h2>
         </div>
-        <p class="lg:col-span-5 text-sm sm:text-base text-stone-600 leading-relaxed">
+        <p class="lg:max-w-xl text-sm text-stone-600 leading-relaxed">
           Para trasladar nuestras tablas de observación de 10 minutos y el tablero multicapa a Buenos Aires, seleccionamos <strong>Plaza de Mayo</strong> por su homología funcional, bordes institucionales, bocas de Subte y explanada monumental.
         </p>
       </div>
@@ -1273,64 +1386,64 @@
       <!-- Comparativa Bilateral Interactiva -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         <!-- Plaza Sotomayor -->
-        <div class="lg:col-span-5 p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="lg:col-span-5 p-7 rounded-xl mica-sheet-card border-t-4 border-t-[#29A9E1] flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-sky-50 text-sky-900 border border-sky-200 text-[10px] font-extrabold uppercase tracking-wider">🇨🇱 Caso Base • Valparaíso</span>
-              <button onclick="setBoardTerritory('sotomayor'); document.getElementById('tablero').scrollIntoView({behavior:'smooth'});" class="text-xs font-bold text-taupe hover:underline">Ver en Tablero →</button>
+              <span class="px-3 py-1 rounded bg-sky-50 text-sky-900 border border-sky-200 text-[10px] font-display font-bold uppercase tracking-wider">🇨🇱 Caso Base • Valparaíso</span>
+              <button onclick="setBoardTerritory('sotomayor'); document.getElementById('tablero').scrollIntoView({behavior:'smooth'});" class="text-xs font-bold text-neutral-900 hover:underline">Ver en Tablero →</button>
             </div>
-            <h3 class="text-2xl font-extrabold uppercase text-neutral-900">Plaza Sotomayor</h3>
+            <h3 class="text-2xl font-display font-bold uppercase text-neutral-900">Plaza Sotomayor</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
               Explanada central con el Monumento a los Héroes de Iquique, flanqueada por el Edificio de la Armada, Aduana, Correo, Estación Puerto (EFE) y los ejes Prat, Cochrane, Blanco y Serrano.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-3 text-center">
-            <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
-              <span id="compClRoutes" class="text-2xl font-black text-neutral-900 block">49</span>
+            <div class="p-3.5 rounded-lg bg-stone-50 border border-stone-200">
+              <span id="compClRoutes" class="text-2xl font-display font-bold text-neutral-900 block">49</span>
               <span class="text-[10px] font-bold uppercase text-stone-500">Trazos en Micas (E1–E6)</span>
             </div>
-            <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
-              <span id="compClStickers" class="text-2xl font-black text-e6 block">60</span>
+            <div class="p-3.5 rounded-lg bg-stone-50 border border-stone-200">
+              <span id="compClStickers" class="text-2xl font-display font-bold text-e6 block">60</span>
               <span class="text-[10px] font-bold uppercase text-stone-500">Stickers de Dificultad</span>
             </div>
           </div>
-          <div class="rounded-2xl overflow-hidden border border-stone-200 h-44">
+          <div class="rounded-lg overflow-hidden border border-stone-200 h-44">
             <img src="https://wiki-ead.b-cdn.net/images/d/d1/Sotoma.jpg" alt="Vista superior Plaza Sotomayor" class="w-full h-full object-cover" />
           </div>
         </div>
 
         <!-- Puente Metodológico -->
-        <div class="lg:col-span-2 p-6 rounded-3xl bg-taupe text-white flex flex-col items-center justify-center text-center space-y-4 shadow-md">
-          <i class="ph-bold ph-arrows-left-right text-3xl text-amber-300"></i>
-          <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-stone-200">Mismo Instrumento</span>
-          <p class="text-xs text-stone-100 leading-relaxed font-light">
+        <div class="lg:col-span-2 p-6 rounded-xl bg-neutral-900 text-white flex flex-col items-center justify-center text-center space-y-4 shadow-md">
+          <i class="ph-bold ph-arrows-left-right text-3xl text-[#EAB308]"></i>
+          <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-300">Mismo Instrumento</span>
+          <p class="text-xs text-stone-200 leading-relaxed font-light">
             Mismo tablero multicapa, mismas <strong>6 esquinas codificadas por color</strong>, mismos <strong>4 pasos</strong> y los mismos <strong>5 pictogramas</strong> para comparar ambos territorios.
           </p>
         </div>
 
         <!-- Plaza de Mayo -->
-        <div class="lg:col-span-5 p-7 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="lg:col-span-5 p-7 rounded-xl mica-sheet-card border-t-4 border-t-[#EAB308] flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-[10px] font-extrabold uppercase tracking-wider">🇦🇷 Proyección • Buenos Aires</span>
-              <button onclick="setBoardTerritory('plaza_de_mayo'); document.getElementById('tablero').scrollIntoView({behavior:'smooth'});" class="text-xs font-bold text-taupe hover:underline">Abrir Mapa BA →</button>
+              <span class="px-3 py-1 rounded bg-amber-50 text-amber-900 border border-amber-200 text-[10px] font-display font-bold uppercase tracking-wider">🇦🇷 Proyección • Buenos Aires</span>
+              <button onclick="setBoardTerritory('plaza_de_mayo'); document.getElementById('tablero').scrollIntoView({behavior:'smooth'});" class="text-xs font-bold text-neutral-900 hover:underline">Abrir Mapa BA →</button>
             </div>
-            <h3 class="text-2xl font-extrabold uppercase text-neutral-900">Plaza de Mayo</h3>
+            <h3 class="text-2xl font-display font-bold uppercase text-neutral-900">Plaza de Mayo</h3>
             <p class="text-xs text-stone-600 leading-relaxed">
               Explanada histórica con la Pirámide de Mayo y el Monumento a Belgrano al centro, rodeada por Casa Rosada, Cabildo, Catedral, bancos/ministerios y bocas de Subte (Líneas A, D y E) y paradas de colectivos.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-3 text-center">
-            <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
-              <span id="compArRoutes" class="text-2xl font-black text-neutral-900 block">6</span>
+            <div class="p-3.5 rounded-lg bg-stone-50 border border-stone-200">
+              <span id="compArRoutes" class="text-2xl font-display font-bold text-neutral-900 block">6</span>
               <span class="text-[10px] font-bold uppercase text-stone-500">Trazos en Micas (E1–E6)</span>
             </div>
-            <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
-              <span id="compArStickers" class="text-2xl font-black text-e5 block">5</span>
+            <div class="p-3.5 rounded-lg bg-stone-50 border border-stone-200">
+              <span id="compArStickers" class="text-2xl font-display font-bold text-e5 block">5</span>
               <span class="text-[10px] font-bold uppercase text-stone-500">Stickers Registrados</span>
             </div>
           </div>
-          <div class="rounded-2xl overflow-hidden border border-stone-200 h-44">
+          <div class="rounded-lg overflow-hidden border border-stone-200 h-44">
             <img src="https://wiki-ead.b-cdn.net/images/f/f5/Demayodearriba.jpg" alt="Vista superior Plaza de Mayo" class="w-full h-full object-cover" />
           </div>
         </div>
@@ -1340,16 +1453,26 @@
   </main>
 
   <!-- =====================================================================
-       FOOTER EDITORIAL: PROYECTO, ESTUDIANTES, PROFESORAS Y ENLACES
+       FOOTER EDITORIAL: PROYECTO, ESTUDIANTES Y PROFESORAS CON LINKS A WIKI CASIOPEA
        ===================================================================== -->
-  <footer class="bg-neutral-900 text-stone-300 py-14 border-t border-neutral-800">
-    <div class="max-w-[1400px] mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+  <footer class="bg-neutral-950 text-stone-300 border-t border-neutral-800">
+    <!-- Franja cromática superior de las 6 esquinas -->
+    <div class="w-full h-1 grid grid-cols-6">
+      <div class="bg-[#29A9E1]"></div>
+      <div class="bg-[#EAB308]"></div>
+      <div class="bg-[#E85C90]"></div>
+      <div class="bg-[#2EAA62]"></div>
+      <div class="bg-[#1E56C6]"></div>
+      <div class="bg-[#E03131]"></div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-8 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
       <!-- Proyecto y Escuela -->
       <div class="md:col-span-4 space-y-3">
-        <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400 block">
+        <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">
           Escuela de Arquitectura y Diseño • PUCV
         </span>
-        <h4 class="text-xl font-black uppercase text-white">
+        <h4 class="text-xl font-display font-bold uppercase text-white">
           Visualizando los Flujos — Grupo 4
         </h4>
         <p class="text-xs text-stone-400 leading-relaxed">
@@ -1357,35 +1480,86 @@
         </p>
       </div>
 
-      <!-- Estudiantes del Proyecto (Separados individualmente) -->
-      <div class="md:col-span-5 space-y-3 text-xs">
-        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Estudiantes del Proyecto (Grupo 4)</span>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-stone-200 font-semibold">
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Muriel Sánchez</div>
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Paula Rosenthal La Fuente</div>
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Denisse Navarro</div>
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Paz Vega Soto</div>
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Gerardo Acevedo</div>
-          <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Pedro Beltrán</div>
-        </div>
+      <!-- Estudiantes del Proyecto (Texto limpio sin botones y con links a Wiki Casiopea) -->
+      <div class="md:col-span-4 space-y-3 text-xs">
+        <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block border-b border-white/10 pb-2">
+          Estudiantes del Proyecto (Grupo 4)
+        </span>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-stone-200 font-medium pt-1">
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Muriel_Sanchez" target="_blank" rel="noopener noreferrer" class="hover:text-[#29A9E1] hover:underline inline-flex items-center gap-1 transition">
+              <span>Muriel Sánchez</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Paula_Rosenthal_La_Fuente" target="_blank" rel="noopener noreferrer" class="hover:text-[#EAB308] hover:underline inline-flex items-center gap-1 transition">
+              <span>Paula Rosenthal La Fuente</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Denisse_Navarro" target="_blank" rel="noopener noreferrer" class="hover:text-[#E85C90] hover:underline inline-flex items-center gap-1 transition">
+              <span>Denisse Navarro</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Paz_Vega_Soto" target="_blank" rel="noopener noreferrer" class="hover:text-[#2EAA62] hover:underline inline-flex items-center gap-1 transition">
+              <span>Paz Vega Soto</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Gerardo_Acevedo" target="_blank" rel="noopener noreferrer" class="hover:text-[#60A5FA] hover:underline inline-flex items-center gap-1 transition">
+              <span>Gerardo Acevedo</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://wiki.ead.pucv.cl/Pedro_Beltr%C3%A1n" target="_blank" rel="noopener noreferrer" class="hover:text-[#F87171] hover:underline inline-flex items-center gap-1 transition">
+              <span>Pedro Beltrán</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <!-- Profesoras y Enlaces del Proyecto -->
-      <div class="md:col-span-3 space-y-5 text-xs">
-        <div class="space-y-2">
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Profesoras del Taller</span>
-          <div class="space-y-1.5 text-stone-200 font-semibold">
-            <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Katherine Exss</div>
-            <div class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">Javiera Ruiz</div>
-          </div>
+      <!-- Profesoras (Texto limpio sin botones y con links a Wiki Casiopea) + Repositorios -->
+      <div class="md:col-span-4 space-y-5 text-xs">
+        <div class="space-y-2.5">
+          <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block border-b border-white/10 pb-2">
+            Profesoras del Taller
+          </span>
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 text-stone-200 font-medium pt-0.5">
+            <li>
+              <a href="https://wiki.ead.pucv.cl/Katherine_Exss" target="_blank" rel="noopener noreferrer" class="hover:text-white hover:underline inline-flex items-center gap-1 transition">
+                <span>Katherine Exss</span>
+                <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://wiki.ead.pucv.cl/Javiera_Ruiz" target="_blank" rel="noopener noreferrer" class="hover:text-white hover:underline inline-flex items-center gap-1 transition">
+                <span>Javiera Ruiz</span>
+                <i class="ph-bold ph-arrow-up-right text-[10px] opacity-60"></i>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div class="space-y-2 pt-2 border-t border-white/10">
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 block">Repositorios Conectados</span>
-          <div class="flex flex-col gap-1.5">
-            <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">Wiki Casiopea — Grupo 4</a>
-            <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">Carpeta Google Drive del Proyecto</a>
-            <a href="https://docs.google.com/spreadsheets/d/1wmw-Nwgk7n2uv59c75qHmsJE7OCENLwLI_ll67eg0w8/edit" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">Planilla Maestra (Resumen + Flujos_Digitales)</a>
+          <span class="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-stone-400 block">
+            Documentación del Proyecto
+          </span>
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 text-stone-300">
+            <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="hover:text-white underline inline-flex items-center gap-1">
+              <span>Wiki Casiopea — Grupo 4</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px]"></i>
+            </a>
+            <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="hover:text-white underline inline-flex items-center gap-1">
+              <span>Carpeta Google Drive</span>
+              <i class="ph-bold ph-arrow-up-right text-[10px]"></i>
+            </a>
           </div>
         </div>
       </div>
