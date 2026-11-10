@@ -2114,14 +2114,13 @@ function sendNewItemToWebhookIfConfigured(item) {
 }
 
 /* =========================================================================
-   16. ANIMACIÓN DE FONDO DEL HERO (CURVAS DE FLUJO ORGÁNICO) + LIGHTBOX + TOAST
+   16. ANIMACIÓN DE FONDO DEL HERO + LIGHTBOX + TOAST
    ========================================================================= */
 function initHeroBackgroundCanvas() {
   const canvas = document.getElementById('heroFlowCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h;
-  let t = 0;
 
   function resize() {
     w = canvas.width = canvas.parentElement.clientWidth;
@@ -2130,35 +2129,54 @@ function initHeroBackgroundCanvas() {
   resize();
   window.addEventListener('resize', resize);
 
-  const streams = [
-    { color: '#29A9E1', yRatio: 0.18, amp: 28, freq: 0.0045, speed: 0.014, phase: 0.0 },
-    { color: '#EAB308', yRatio: 0.31, amp: 34, freq: 0.0038, speed: 0.011, phase: 1.2 },
-    { color: '#E85C90', yRatio: 0.46, amp: 26, freq: 0.0052, speed: 0.016, phase: 2.4 },
-    { color: '#2EAA62', yRatio: 0.60, amp: 32, freq: 0.0041, speed: 0.013, phase: 3.6 },
-    { color: '#1E56C6', yRatio: 0.74, amp: 30, freq: 0.0047, speed: 0.012, phase: 4.8 },
-    { color: '#E03131', yRatio: 0.86, amp: 24, freq: 0.0055, speed: 0.015, phase: 5.9 }
-  ];
+  const colors = ['#29A9E1', '#EAB308', '#E85C90', '#2EAA62', '#1E56C6', '#E03131'];
+  const walkers = Array.from({ length: 42 }, (_, i) => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() > 0.5 ? 1 : -1) * (0.6 + Math.random() * 1.1),
+    vy: 0,
+    color: colors[i % colors.length],
+    trail: []
+  }));
 
   function animateHero() {
     ctx.clearRect(0, 0, w, h);
-    t += 1;
-
-    streams.forEach(st => {
-      ctx.beginPath();
-      const baseY = h * st.yRatio;
-      for (let x = 0; x <= w; x += 16) {
-        const y = baseY +
-          Math.sin(x * st.freq + t * st.speed + st.phase) * st.amp +
-          Math.cos(x * (st.freq * 0.55) - t * (st.speed * 0.7)) * (st.amp * 0.45);
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+    walkers.forEach(wk => {
+      if (Math.random() < 0.02) {
+        if (wk.vx !== 0) {
+          wk.vy = (Math.random() > 0.5 ? 1 : -1) * Math.abs(wk.vx);
+          wk.vx = 0;
+        } else {
+          wk.vx = (Math.random() > 0.5 ? 1 : -1) * Math.abs(wk.vy);
+          wk.vy = 0;
+        }
       }
-      ctx.strokeStyle = st.color;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-    });
+      wk.x += wk.vx;
+      wk.y += wk.vy;
+      if (wk.x < 0) wk.x = w;
+      if (wk.x > w) wk.x = 0;
+      if (wk.y < 0) wk.y = h;
+      if (wk.y > h) wk.y = 0;
 
+      wk.trail.push({ x: wk.x, y: wk.y });
+      if (wk.trail.length > 38) wk.trail.shift();
+
+      if (wk.trail.length > 2) {
+        ctx.beginPath();
+        ctx.moveTo(wk.trail[0].x, wk.trail[0].y);
+        for (let i = 1; i < wk.trail.length; i++) {
+          if (Math.hypot(wk.trail[i].x - wk.trail[i - 1].x, wk.trail[i].y - wk.trail[i - 1].y) > 50) {
+            ctx.moveTo(wk.trail[i].x, wk.trail[i].y);
+          } else {
+            ctx.lineTo(wk.trail[i].x, wk.trail[i].y);
+          }
+        }
+        ctx.strokeStyle = wk.color;
+        ctx.lineWidth = 2.2;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+    });
     requestAnimationFrame(animateHero);
   }
   animateHero();

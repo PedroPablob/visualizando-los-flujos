@@ -6,10 +6,10 @@
   <title>Visualizando los Flujos — Grupo 4 | Taller de Diseño de Servicios 2026 • e[ad] PUCV</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & Lora -->
+  <!-- Google Fonts: Outfit (geométrica gruesa similar a Montserrat en pesos 800/900) & Lora -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -18,13 +18,13 @@
       theme: {
         extend: {
           fontFamily: {
-            montserrat: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
+            montserrat: ['"Outfit"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
             lora: ['Lora', 'Georgia', 'serif'],
           },
           colors: {
             taupe: '#3F3A38',
-            warmbg: '#F6F5F2',
+            warmbg: '#FFFFFF',
             e1: '#29A9E1', /* Celeste */
             e2: '#EAB308', /* Amarillo */
             e3: '#E85C90', /* Rosado */
@@ -40,7 +40,7 @@
   <style>
     :root {
       --c-taupe: #3F3A38;
-      --c-warm: #F6F5F2;
+      --c-warm: #FFFFFF;
       --c-e1: #29A9E1;
       --c-e2: #EAB308;
       --c-e3: #E85C90;
@@ -50,25 +50,28 @@
     }
 
     body {
-      background-color: #F6F5F2;
-      background-image: radial-gradient(rgba(63, 58, 56, 0.09) 1px, transparent 1px);
-      background-size: 24px 24px;
-      color: #18181B;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FFFFFF;
+      color: #171717;
+      font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Space Grotesk', sans-serif;
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900 !important;
+    }
+
+    h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800 !important;
     }
 
     /* Tarjeta estilo lámina de mica / plano arquitectónico */
     .mica-sheet-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border: 1px solid #E4E2DD;
-      box-shadow: 0 10px 28px -12px rgba(24, 24, 27, 0.07);
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      box-shadow: 0 10px 28px -12px rgba(24, 24, 27, 0.06);
     }
 
     /* Tablero físico Trovicel + Acrílico */
@@ -192,7 +195,7 @@
   <!-- =====================================================================
        CABECERA TÉCNICA DE LÁMINA + BARRA ESPECTRAL DE LAS 6 MICAS
        ===================================================================== -->
-  <header class="sticky top-0 z-50 bg-[#F6F5F2]/95 backdrop-blur-md border-b border-stone-300/90">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200">
     <!-- Franja cromática de las 6 micas (E1 a E6) -->
     <div class="w-full h-1.5 grid grid-cols-6">
       <div class="bg-[#29A9E1]" title="Esquina 1: Celeste"></div>
@@ -251,169 +254,89 @@
   </header>
 
   <!-- =====================================================================
-       PORTADA CARTOGRÁFICA MULTICAPA (DISEÑO ASIMÉTRICO PROPIO DEL GRUPO 4)
+       PORTADA PRINCIPAL (ORDEN CENTRADO CON NUEVO ESTILO VISUAL)
        ===================================================================== -->
-  <section id="inicio" class="relative overflow-hidden border-b border-stone-300 bg-[#F6F5F2] py-12 sm:py-16 lg:py-20">
-    <!-- Lienzo de curvas orgánicas suaves de fondo -->
-    <canvas id="heroFlowCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-30"></canvas>
+  <section id="inicio" class="relative min-h-[80vh] flex items-center justify-center overflow-hidden border-b border-stone-200 bg-white">
+    <!-- Lienzo de trazos ortogonales tipo laberinto/cuadrícula en los 6 colores -->
+    <canvas id="heroFlowCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-45"></canvas>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.93)_0%,rgba(255,255,255,0.68)_60%,rgba(255,255,255,0.92)_100%)] pointer-events-none"></div>
 
-    <div class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+    <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-10 py-16 text-center space-y-7">
+      <!-- 1. Título Principal y Subtítulo -->
+      <div class="space-y-3">
+        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-[0.05em] text-neutral-950 leading-[1.04]">
+          Visualizando los Flujos
+        </h1>
+        <p class="font-lora italic text-lg sm:text-2xl text-taupe max-w-3xl mx-auto">
+          Estudio de movimiento, detención y comportamientos peatonales en Plazas Sotomayor y De Mayo
+        </p>
+      </div>
 
-        <!-- COLUMNA IZQUIERDA (7 COLS): TÍTULO EDITORIAL, ACCIONES Y CRÉDITOS CON LINKS A CASIOPEA -->
-        <div class="lg:col-span-7 flex flex-col justify-between space-y-7 bg-white/85 backdrop-blur-md p-6 sm:p-10 rounded-xl border border-stone-300/90 shadow-sm relative overflow-hidden">
-          <!-- Barra vertical izquierda con los 6 colores de las esquinas -->
-          <div class="absolute left-0 top-0 bottom-0 w-2 flex flex-col">
-            <div class="flex-1 bg-[#29A9E1]"></div>
-            <div class="flex-1 bg-[#EAB308]"></div>
-            <div class="flex-1 bg-[#E85C90]"></div>
-            <div class="flex-1 bg-[#2EAA62]"></div>
-            <div class="flex-1 bg-[#1E56C6]"></div>
-            <div class="flex-1 bg-[#E03131]"></div>
-          </div>
-
-          <div class="space-y-5 pl-2 sm:pl-3">
-            <!-- Encabezado técnico de lámina (sin píldora de puntos copiada) -->
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-200 text-[11px] font-display font-bold uppercase tracking-[0.14em] text-stone-500">
-              <span>PROYECTO DE VISUALIZACIÓN • GRUPO 4</span>
-              <span class="text-neutral-900">VALPARAÍSO (CL) / BUENOS AIRES (AR)</span>
-            </div>
-
-            <div class="space-y-3">
-              <h1 class="font-display text-4xl sm:text-5xl xl:text-6xl font-bold uppercase tracking-tight text-neutral-950 leading-[1.03]">
-                Visualizando los Flujos
-              </h1>
-              <p class="font-lora italic text-lg sm:text-xl text-stone-700 leading-relaxed">
-                Estudio de movimiento, detención y comportamientos peatonales en Plazas Sotomayor y De Mayo
-              </p>
-            </div>
-
-            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Registro táctil y digital compuesto por <strong>6 láminas de mica transparente</strong> (una por esquina de intercepción), <strong>5 pictogramas de fricción urbana</strong>, <strong>planillas de observación sistemática de 10 minutos</strong> y <strong>encuestas ciudadanas</strong> conectadas en tiempo real.
-            </p>
-
-            <!-- Botones de Acción con geometría arquitectónica propia -->
-            <div class="pt-2 flex flex-wrap items-center gap-2.5">
-              <a href="#tablero" class="px-5 py-3 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-xs font-display font-bold uppercase tracking-wider transition shadow-sm inline-flex items-center gap-2">
-                <i class="ph-bold ph-layers text-base text-[#29A9E1]"></i>
-                <span>Abrir Tablero de Micas</span>
-              </a>
-              <button onclick="activateAuthorAndScroll()" class="px-5 py-3 rounded-lg bg-white hover:bg-stone-100 text-neutral-900 border-2 border-neutral-900 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-2">
-                <i class="ph-bold ph-pen-nib text-base"></i>
-                <span>Dibujar Nuevo Recorrido</span>
-              </button>
-              <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-lg bg-stone-100 hover:bg-stone-200 text-neutral-900 border border-stone-300 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-1.5">
-                <i class="ph-bold ph-book-open-text text-base"></i>
-                <span>Wiki del Proyecto</span>
-              </a>
-              <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-lg bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 text-xs font-display font-bold uppercase tracking-wider transition inline-flex items-center gap-1.5">
-                <i class="ph-bold ph-google-drive-logo text-base"></i>
-                <span>Drive</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Integrantes y Profesoras con enlaces directos a sus perfiles de Wiki Casiopea -->
-          <div class="pl-2 sm:pl-3 pt-4 border-t border-stone-200 text-xs text-stone-600 space-y-1.5">
-            <div class="leading-relaxed">
-              <strong class="font-display uppercase tracking-wider text-neutral-900 text-[11px] mr-1.5">Integrantes:</strong>
-              <a href="https://wiki.ead.pucv.cl/Muriel_Sanchez" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Muriel Sánchez</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Paula_Rosenthal_La_Fuente" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Paula Rosenthal La Fuente</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Denisse_Navarro" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Denisse Navarro</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Paz_Vega_Soto" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Paz Vega Soto</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Gerardo_Acevedo" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Gerardo Acevedo</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Pedro_Beltr%C3%A1n" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Pedro Beltrán</a>
-            </div>
-            <div class="leading-relaxed">
-              <strong class="font-display uppercase tracking-wider text-neutral-900 text-[11px] mr-1.5">Profesoras:</strong>
-              <a href="https://wiki.ead.pucv.cl/Katherine_Exss" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Katherine Exss</a>
-              <span class="text-stone-300 mx-1">/</span>
-              <a href="https://wiki.ead.pucv.cl/Javiera_Ruiz" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 underline decoration-stone-300 hover:decoration-neutral-900 transition">Javiera Ruiz</a>
-            </div>
-          </div>
+      <!-- 2. Las 5 Tarjetas de Indicadores en Tiempo Real -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto pt-2 text-left">
+        <div class="p-4 rounded-xl mica-sheet-card border-t-4 border-t-neutral-900">
+          <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Micas y Trazos</span>
+          <span id="heroKpiRoutes" class="text-2xl sm:text-3xl font-display font-bold text-neutral-900">55</span>
+          <span class="text-[11px] text-stone-500 block">Recorridos digitalizados</span>
         </div>
-
-        <!-- COLUMNA DERECHA (5 COLS): FICHA TÉCNICA DE CAPAS DE MICA Y MÉTRICAS EN VIVO -->
-        <div class="lg:col-span-5 flex flex-col justify-between bg-neutral-900 text-white p-6 sm:p-8 rounded-xl border border-neutral-800 shadow-lg space-y-6">
-          <div class="flex items-center justify-between border-b border-white/15 pb-3">
-            <div>
-              <span class="text-[10px] font-display font-bold uppercase tracking-[0.18em] text-stone-400 block">
-                ÍNDICE DE CAPAS E INDICADORES EN VIVO
-              </span>
-              <h2 class="text-base sm:text-lg font-display font-bold uppercase tracking-wide text-white mt-0.5">
-                6 Esquinas = 6 Micas Superpuestas
-              </h2>
-            </div>
-            <span class="px-2.5 py-1 rounded bg-white/10 text-[10px] font-display font-bold uppercase tracking-wider text-emerald-300">
-              Google Sheets Activo
-            </span>
-          </div>
-
-          <!-- Acceso rápido a cada una de las 6 capas de mica -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-left">
-            <button onclick="focusCornerOnBoard('E1')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#29A9E1] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#29A9E1] block">Mica E1 • Celeste</span>
-              <span class="text-xs font-semibold text-white block truncate">Blanco Sur</span>
-            </button>
-            <button onclick="focusCornerOnBoard('E2')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#EAB308] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#EAB308] block">Mica E2 • Amarillo</span>
-              <span class="text-xs font-semibold text-white block truncate">Estación Puerto</span>
-            </button>
-            <button onclick="focusCornerOnBoard('E3')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#E85C90] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#E85C90] block">Mica E3 • Rosado</span>
-              <span class="text-xs font-semibold text-white block truncate">Cochrane Norte</span>
-            </button>
-            <button onclick="focusCornerOnBoard('E4')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#2EAA62] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#2EAA62] block">Mica E4 • Verde</span>
-              <span class="text-xs font-semibold text-white block truncate">Cochrane Sur</span>
-            </button>
-            <button onclick="focusCornerOnBoard('E5')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#1E56C6] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#60A5FA] block">Mica E5 • Azul</span>
-              <span class="text-xs font-semibold text-white block truncate">Prat Sur / Correo</span>
-            </button>
-            <button onclick="focusCornerOnBoard('E6')" class="p-2.5 rounded-lg bg-white/5 hover:bg-white/15 border-l-4 border-[#E03131] transition text-left">
-              <span class="text-[10px] font-display font-bold uppercase text-[#F87171] block">Mica E6 • Rojo</span>
-              <span class="text-xs font-semibold text-white block truncate">Armada / Prat</span>
-            </button>
-          </div>
-
-          <!-- Matriz de los 5 KPIs en Tiempo Real -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 border-t border-white/15">
-            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
-              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Trazos en Micas</span>
-              <span id="heroKpiRoutes" class="text-2xl font-display font-bold text-white">55</span>
-              <span class="text-[10px] text-stone-400 block">Recorridos activos</span>
-            </div>
-            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
-              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Stickers Fricción</span>
-              <span id="heroKpiStickers" class="text-2xl font-display font-bold text-[#F87171]">65</span>
-              <span class="text-[10px] text-stone-400 block">En puntos de conflicto</span>
-            </div>
-            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
-              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Encuestas</span>
-              <span id="heroKpiSurveys" class="text-2xl font-display font-bold text-[#29A9E1]">96</span>
-              <span class="text-[10px] text-stone-400 block">Seguridad: <strong id="heroKpiSafety" class="text-white">2.99</strong>/5</span>
-            </div>
-            <div class="p-3 rounded-lg bg-white/5 border border-white/10">
-              <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Planillas 10 Min</span>
-              <span id="heroKpiMinutes" class="text-2xl font-display font-bold text-[#2EAA62]">539</span>
-              <span class="text-[10px] text-stone-400 block">Minutos registrados</span>
-            </div>
-            <div class="col-span-2 sm:col-span-2 p-3 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-[10px] font-display font-bold uppercase tracking-wider text-stone-400 block">Cruce Fuera de Paso</span>
-                <span class="text-[11px] text-stone-300 block">Máximo registrado en Esquina 4</span>
-              </div>
-              <span id="heroKpiInformal" class="text-2xl sm:text-3xl font-display font-bold text-[#EAB308]">56%</span>
-            </div>
-          </div>
+        <div class="p-4 rounded-xl mica-sheet-card border-t-4 border-t-[#E03131]">
+          <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Stickers Fricción</span>
+          <span id="heroKpiStickers" class="text-2xl sm:text-3xl font-display font-bold text-e6">65</span>
+          <span class="text-[11px] text-stone-500 block">Obstáculos georreferenciados</span>
         </div>
+        <div class="p-4 rounded-xl mica-sheet-card border-t-4 border-t-[#1E56C6]">
+          <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Encuestas en Vivo</span>
+          <span id="heroKpiSurveys" class="text-2xl sm:text-3xl font-display font-bold text-e5">96</span>
+          <span class="text-[11px] text-stone-500 block">Seguridad media: <strong id="heroKpiSafety">2.99</strong>/5</span>
+        </div>
+        <div class="p-4 rounded-xl mica-sheet-card border-t-4 border-t-[#2EAA62]">
+          <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Observación 10 Min</span>
+          <span id="heroKpiMinutes" class="text-2xl sm:text-3xl font-display font-bold text-e4">539</span>
+          <span class="text-[11px] text-stone-500 block">Minutos medidos en E1–E6</span>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-4 rounded-xl mica-sheet-card border-t-4 border-t-[#EAB308]">
+          <span class="text-[10px] font-display font-bold uppercase tracking-widest text-stone-400 block">Cruce Informal Máx.</span>
+          <span id="heroKpiInformal" class="text-2xl sm:text-3xl font-display font-bold text-amber-600">56%</span>
+          <span class="text-[11px] text-stone-500 block">En Esquina 4 (Cochrane Sur)</span>
+        </div>
+      </div>
 
+      <!-- 3. Botones de Acción Principal -->
+      <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+        <a href="#tablero" class="px-6 py-3.5 rounded-lg bg-neutral-900 hover:bg-taupe text-white text-xs font-display font-bold uppercase tracking-[0.14em] transition shadow-md inline-flex items-center gap-2">
+          <i class="ph-bold ph-stack text-base"></i>
+          <span>Explorar Dispositivo de Micas</span>
+        </a>
+        <button onclick="activateAuthorAndScroll()" class="px-6 py-3.5 rounded-lg bg-white hover:bg-stone-100 text-neutral-900 border-2 border-neutral-900 text-xs font-display font-bold uppercase tracking-[0.14em] transition inline-flex items-center gap-2">
+          <i class="ph-bold ph-pen-nib text-base"></i>
+          <span>Dibujar Nuevo Recorrido</span>
+        </button>
+        <a href="https://wiki.ead.pucv.cl/Proyecto_de_Visualizaci%C3%B3n_-_Grupo_4" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-lg bg-stone-200/80 hover:bg-stone-300/80 text-neutral-800 text-xs font-display font-bold uppercase tracking-[0.13em] transition inline-flex items-center gap-2">
+          <i class="ph-bold ph-book-open-text text-base"></i>
+          <span>Wiki del Proyecto</span>
+        </a>
+        <a href="https://drive.google.com/drive/u/2/folders/1SQGuWZFZCUKX47XClXhGdGazrTwDpdzK" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-lg bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 text-xs font-display font-bold uppercase tracking-[0.13em] transition inline-flex items-center gap-2">
+          <i class="ph-bold ph-google-drive-logo text-base"></i>
+          <span>Drive del Proyecto</span>
+        </a>
+      </div>
+
+      <!-- 4. Integrantes del Equipo y Profesoras (con links a Wiki Casiopea) -->
+      <div class="pt-4 border-t border-stone-300/80 text-[11px] text-stone-600 font-medium space-y-1">
+        <div>
+          <strong class="font-display uppercase tracking-wider text-neutral-900 mr-1">Estudiantes Grupo 4:</strong>
+          <a href="https://wiki.ead.pucv.cl/Muriel_Sanchez" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Muriel Sánchez</a> •
+          <a href="https://wiki.ead.pucv.cl/Paula_Rosenthal_La_Fuente" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Paula Rosenthal La Fuente</a> •
+          <a href="https://wiki.ead.pucv.cl/Denisse_Navarro" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Denisse Navarro</a> •
+          <a href="https://wiki.ead.pucv.cl/Paz_Vega_Soto" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Paz Vega Soto</a> •
+          <a href="https://wiki.ead.pucv.cl/Gerardo_Acevedo" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Gerardo Acevedo</a> •
+          <a href="https://wiki.ead.pucv.cl/Pedro_Beltr%C3%A1n" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Pedro Beltrán</a>
+        </div>
+        <div>
+          <strong class="font-display uppercase tracking-wider text-neutral-900 mr-1">Profesoras:</strong>
+          <a href="https://wiki.ead.pucv.cl/Katherine_Exss" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Katherine Exss</a> •
+          <a href="https://wiki.ead.pucv.cl/Javiera_Ruiz" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 hover:underline transition">Javiera Ruiz</a>
+        </div>
       </div>
     </div>
   </section>
