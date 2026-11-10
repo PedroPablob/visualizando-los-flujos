@@ -5,8 +5,26 @@
    Stickers), Dashboard Cuantitativo (10 Salidas) y Encuestas (n=96+).
    ========================================================================= */
 
-const STORAGE_KEY_FLUJOS = 'ead_g4_flujos_digitales_v2';
+const STORAGE_KEY_FLUJOS = 'ead_g4_flujos_digitales_v3';
 const STORAGE_KEY_WEBHOOK = 'ead_g4_sheets_webhook_v1';
+
+function fixUtf8Text(str) {
+  if (typeof str !== 'string' || !str.includes('Ã')) return str;
+  try {
+    return decodeURIComponent(escape(str));
+  } catch (e) {
+    return str;
+  }
+}
+
+function sanitizeFlowItems(items) {
+  if (!Array.isArray(items)) return [];
+  return items.map(item => ({
+    ...item,
+    nota: fixUtf8Text(item.nota || ''),
+    colorName: fixUtf8Text(item.colorName || '')
+  }));
+}
 
 // Estado global
 let flujosData = loadFlujosFromStorage();
@@ -52,13 +70,14 @@ let sheetsSyncStatus = {
 
 function loadFlujosFromStorage() {
   try {
+    localStorage.removeItem('ead_g4_flujos_digitales_v2');
     const saved = localStorage.getItem(STORAGE_KEY_FLUJOS);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      if (Array.isArray(parsed) && parsed.length > 0) return sanitizeFlowItems(parsed);
     }
   } catch (e) {}
-  return JSON.parse(JSON.stringify(window.INITIAL_FLUJOS_DATA || []));
+  return sanitizeFlowItems(JSON.parse(JSON.stringify(window.INITIAL_FLUJOS_DATA || [])));
 }
 
 function saveFlujosToStorage() {
